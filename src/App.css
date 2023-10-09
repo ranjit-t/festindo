@@ -19,15 +19,135 @@
   }
 }
 
-.special-Effect {
-  transform: translateX(100%); /* Start off-screen to the right */
-  transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
-}
-
-.special-Effect.open {
-  transform: translateX(0); /* Slide in from the right */
-}
-
 .eventsList {
   margin: 0 auto;
+}
+
+@keyframes searchAnimation {
+  0% {
+    height: 0;
+    display: block;
+  }
+  20% {
+    height: 20px;
+  }
+  40% {
+    height: 40px;
+  }
+  60% {
+    height: 60px;
+  }
+  80% {
+    height: 80px;
+  }
+  100% {
+    height: 160px;
+  }
+}
+
+.open-searchbar {
+  width: fit-content;
+  height: 160px;
+  /* border: 1px solid black; */
+  padding: 10px;
+  animation: searchAnimation 0.5s ease-out;
+  overflow: hidden;
+  /* display: block; */
+}
+
+/* Define the keyframes for closing the search animation */
+@keyframes closeSearchAnimation {
+  0% {
+    height: 160px;
+    display: block;
+  }
+  20% {
+    height: 80px;
+  }
+  40% {
+    height: 60px;
+  }
+  60% {
+    height: 40px;
+  }
+  80% {
+    height: 20px;
+  }
+  100% {
+    height: 0;
+    display: none;
+  }
+}
+
+.closed-searchbar {
+  width: fit-content;
+  height: 0px;
+  /* border: 1px solid black; */
+  padding: 10px;
+  padding-top: 0;
+  display: none;
+  animation: closeSearchAnimation 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes openTriggernimation {
+  0% {
+    height: 0;
+    display: none;
+  }
+  25% {
+    height: 20px;
+    display: block;
+  }
+  50% {
+    height: 40px;
+    display: block;
+  }
+  75% {
+    height: 60px;
+    display: block;
+  }
+  100% {
+    height: 80px;
+    display: block;
+  }
+}
+
+@keyframes closedTriggerAnimation {
+  0% {
+    height: 0px;
+    display: block;
+  }
+  25% {
+    height: 20px;
+    display: block;
+  }
+  50% {
+    height: 40px;
+    display: block;
+  }
+  75% {
+    height: 60px;
+    display: block;
+  }
+  100% {
+    height: 80px;
+    display: none;
+  }
+}
+
+.open-trigger {
+  width: fit-content;
+  height: 80px;
+  animation: openTriggernimation 0.8s ease-out;
+  overflow: hidden;
+  display: block;
+}
+
+.closed-trigger {
+  width: fit-content;
+  height: 0px;
+  display: none;
+  animation: closedTriggernimation 0.8s ease-out;
+  overflow: hidden;
 }
