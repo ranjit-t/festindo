@@ -22,7 +22,7 @@
 .eventsList {
   margin: 0 auto;
 }
-
+/* 
 @keyframes searchAnimation {
   0% {
     height: 0;
@@ -48,14 +48,11 @@
 .open-searchbar {
   width: fit-content;
   height: 160px;
-  /* border: 1px solid black; */
   padding: 10px;
   animation: searchAnimation 0.5s ease-out;
   overflow: hidden;
-  /* display: block; */
 }
 
-/* Define the keyframes for closing the search animation */
 @keyframes closeSearchAnimation {
   0% {
     height: 160px;
@@ -82,7 +79,6 @@
 .closed-searchbar {
   width: fit-content;
   height: 0px;
-  /* border: 1px solid black; */
   padding: 10px;
   padding-top: 0;
   display: none;
@@ -134,20 +130,13 @@
     height: 80px;
     display: none;
   }
-}
+} */
 
 .open-trigger {
-  width: fit-content;
-  height: 80px;
-  animation: openTriggernimation 0.8s ease-out;
-  overflow: hidden;
   display: block;
 }
 
 .closed-trigger {
-  width: fit-content;
-  height: 0px;
   display: none;
-  animation: closedTriggernimation 0.8s ease-out;
   overflow: hidden;
 }

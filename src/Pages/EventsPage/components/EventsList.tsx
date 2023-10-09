@@ -3,7 +3,7 @@ import ExpandedSearch from "./ExpandedSearch";
 
 export default function EventsList({ events, expanded, handleExpandedClose }) {
   return (
-    <div onClick={handleExpandedClose}>
+    <div>
       <div
         className={
           expanded
@@ -11,7 +11,9 @@ export default function EventsList({ events, expanded, handleExpandedClose }) {
             : "mt-6  mb-2 closed-searchbar"
         }
       >
-        <ExpandedSearch />
+        {expanded && (
+          <ExpandedSearch handleExpandedClose={handleExpandedClose} />
+        )}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2  justify-evenly sm:max-w-[90vw]">
         {events.map((event) => {

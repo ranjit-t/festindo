@@ -26,6 +26,7 @@ export default function Events() {
         events={events}
         expanded={expanded}
         handleExpandedClose={handleExpandedClose}
+        handleExpandedClose={handleExpandedClose}
       />
     </div>
   );
