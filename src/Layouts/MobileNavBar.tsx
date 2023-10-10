@@ -6,6 +6,8 @@ import "../App.css";
 export default function MobileNavBar({
   burgerOpen,
   setBurgerOpen,
+  isOrg,
+  isConnected,
 }: MobileNavBarProps) {
   const toggleMenu = () => {
     setBurgerOpen((prev) => !prev);
@@ -19,7 +21,7 @@ export default function MobileNavBar({
           : "hidden"
       }
     >
-      <div className="flex flex-col gap-2 justify-center items-center w-screen h-screen text-2xl">
+      <div className="flex flex-col gap-4 justify-center items-center w-screen h-screen text-2xl">
         <img
           src={open}
           alt=""
@@ -32,6 +34,16 @@ export default function MobileNavBar({
         <NavLink to="/events" onClick={toggleMenu}>
           Events
         </NavLink>
+        {isOrg && (
+          <NavLink to="/dashboard" onClick={toggleMenu}>
+            Dashboard
+          </NavLink>
+        )}
+        {isConnected && (
+          <NavLink to="/profile" onClick={toggleMenu}>
+            Profile
+          </NavLink>
+        )}
       </div>
     </div>
   );
@@ -40,4 +52,6 @@ export default function MobileNavBar({
 interface MobileNavBarProps {
   burgerOpen: boolean;
   setBurgerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isOrg: boolean;
+  isConnected: boolean;
 }

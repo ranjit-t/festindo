@@ -5,8 +5,11 @@ import closed from "../Images/closedburger.svg";
 import MobileNavBar from "./MobileNavBar";
 import OnlyDesktop from "../GlobalUI/OnlyDesktop";
 
-export default function PageHeader() {
+export default function PageHeader({ isOrg }: { isOrg: boolean }) {
+  //
   const [burgerOpen, setBurgerOpen] = useState<boolean>(false);
+  const [isConnected, setIsConnected] = useState<boolean>(true);
+
   return (
     <div className="w-[95vw] mx-auto mt-2">
       <div className="flex justify-between ">
@@ -25,6 +28,8 @@ export default function PageHeader() {
           <OnlyDesktop css="flex gap-2 items-center">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events">Events</NavLink>
+            {isOrg && <NavLink to="/dashboard">Dashboard</NavLink>}
+            {isConnected && <NavLink to="/profile">Profile</NavLink>}
           </OnlyDesktop>
           <div>
             <img
@@ -37,7 +42,12 @@ export default function PageHeader() {
             />
           </div>
         </div>
-        <MobileNavBar burgerOpen={burgerOpen} setBurgerOpen={setBurgerOpen} />
+        <MobileNavBar
+          burgerOpen={burgerOpen}
+          setBurgerOpen={setBurgerOpen}
+          isOrg={isOrg}
+          isConnected={isConnected}
+        />
       </div>
       <div className="flex justify-end">
         <select name="" id="">

@@ -20,7 +20,7 @@ export default function EventsList({ events, expanded, handleExpandedClose }) {
           return (
             <div
               key={event.id}
-              className="border border-1 border-black p-2 m-4  cursor-pointer rounded-lg"
+              className="border border-1 border-black p-2 m-4  cursor-pointer rounded-lg "
             >
               <img src={event.photos[0]} alt="" className="max-h-[500px]" />
               <div className="p-2 flex flex-col gap-2">
