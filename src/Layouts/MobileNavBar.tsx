@@ -17,7 +17,7 @@ export default function MobileNavBar({
     <div
       className={
         burgerOpen
-          ? "absolute top-0 left-0 bg-black text-white w-screen h-screen block open-navBar"
+          ? "absolute top-0 left-0 bg-black text-white w-screen h-screen block open-navBar "
           : "hidden"
       }
     >

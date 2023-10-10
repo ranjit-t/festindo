@@ -8,10 +8,12 @@ import PageHeader from "./Layouts/PageHeader";
 import Footer from "./Layouts/Footer/Footer";
 import OrgDashboard from "./Pages/OrgDashboard/OrgDashboard";
 import Profile from "./Pages/Profile/Profile";
+import Signup from "./Pages/Connections/Signup";
+import Login from "./Pages/Connections/Login";
 
 function App() {
   const [country, setcountry] = useState<string>("");
-  const [isOrg, setIsOrg] = useState<boolean>(true);
+  const [isOrg, setIsOrg] = useState<boolean>(false);
 
   return (
     <Router>
@@ -21,6 +23,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/Login" element={<Login />} />
             <Route path="/dashboard" element={<OrgDashboard />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>

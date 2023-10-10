@@ -8,7 +8,7 @@ import OnlyDesktop from "../GlobalUI/OnlyDesktop";
 export default function PageHeader({ isOrg }: { isOrg: boolean }) {
   //
   const [burgerOpen, setBurgerOpen] = useState<boolean>(false);
-  const [isConnected, setIsConnected] = useState<boolean>(true);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
 
   return (
     <div className="w-[95vw] mx-auto mt-2">
@@ -25,11 +25,19 @@ export default function PageHeader({ isOrg }: { isOrg: boolean }) {
           <p className="text-[14px]">Celebrating Indian Events</p>
         </div>
         <div className="flex gap-4 items-center">
-          <OnlyDesktop css="flex gap-2 items-center">
+          <OnlyDesktop css="flex gap-4 items-center">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events">Events</NavLink>
-            {isOrg && <NavLink to="/dashboard">Dashboard</NavLink>}
-            {isConnected && <NavLink to="/profile">Profile</NavLink>}
+            {isOrg ? (
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            ) : (
+              <NavLink to="/signup">Signup</NavLink>
+            )}
+            {isConnected ? (
+              <NavLink to="/profile">Profile</NavLink>
+            ) : (
+              <NavLink to="/login">Login</NavLink>
+            )}
           </OnlyDesktop>
           <div>
             <img
