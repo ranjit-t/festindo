@@ -1,6 +1,7 @@
-export let events = [
+import EventsType from "../Types/EventsType";
+export let events: EventsType[] = [
   {
-    id: "12345",
+    id: 12345,
     title: "Music Festival 2023",
     description:
       "Join us for a weekend of live music and entertainment! Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quaerat reiciendis odit rerum pariatur officia ipsa? Incidunt fuga nisi modi, suscipit non repellendus perspiciatis, excepturi a officiis officia esse sapiente!",
@@ -14,7 +15,7 @@ export let events = [
     country: "France",
   },
   {
-    id: "54321",
+    id: 54321,
     title: "Art Exhibition",
     description: "Explore a collection of contemporary art.",
     organizerName: "ArtGallery Co.",
@@ -27,7 +28,7 @@ export let events = [
     country: "France",
   },
   {
-    id: "67890",
+    id: 67890,
     title: "Food Truck Festival",
     description: "Taste delicious dishes from around the world!",
     organizerName: "Foodie Delights",
@@ -40,7 +41,7 @@ export let events = [
     country: "USA",
   },
   {
-    id: "98765",
+    id: 98765,
     title: "Tech Conference 2023",
     description: "Stay updated with the latest tech trends and innovations.",
     organizerName: "TechCon Inc.",
@@ -53,7 +54,7 @@ export let events = [
     country: "France",
   },
   {
-    id: "23456",
+    id: 23456,
     title: "Nature Hike Adventure",
     description: "Explore the beauty of the great outdoors!",
     organizerName: "Wild Explorers",

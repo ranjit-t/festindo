@@ -3,11 +3,15 @@ import search from "../../../Images/search.svg";
 import Heading from "../../../GlobalUI/Heading";
 import cancel from "../../../Images/cancel.svg";
 
-export default function ExpandedSearch({ handleExpandedClose }) {
+export default function ExpandedSearch({
+  setExpanded,
+}: {
+  setExpanded: CustomDispatch<boolean>;
+}) {
   const [date, setDate] = useState("");
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
+  const handleDateChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setDate(e.currentTarget.value); // Use e.currentTarget instead of e.target
   };
 
   const inputStyle = {
@@ -53,7 +57,7 @@ export default function ExpandedSearch({ handleExpandedClose }) {
         </div>
         <div
           className=" bg-white rounded-full absolute -top-1 -right-1 cursor-pointer ml-2"
-          onClick={handleExpandedClose}
+          onClick={() => setExpanded(false)}
         >
           <img src={cancel} alt="X" className="w-8" />
         </div>
