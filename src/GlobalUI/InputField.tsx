@@ -17,7 +17,6 @@ export default function InputField({
           className="border border-1 border-black px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw]"
           onChange={(e) => {
             setValue(e.target.value);
-            console.log(value);
           }}
           value={value}
           required={required ? required : true}

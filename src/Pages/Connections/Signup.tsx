@@ -3,18 +3,51 @@ import Heading from "../../GlobalUI/Heading";
 import InputField from "../../GlobalUI/InputField";
 import SubmitButton from "../../GlobalUI/SubmitButton";
 import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../Firebase/config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 export default function Signup() {
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Submitting");
-  };
-
-  const navigate = useNavigate();
-
+  //
+  const [errorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [conPass, setConPass] = useState("");
+  const [fullName, setFullName] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setErrorMessage("");
+    if (fullName.length < 5) {
+      setErrorMessage("the name should at least be of characters");
+      return;
+    }
+    if (pass !== conPass) {
+      setErrorMessage("the passwords are not matching");
+      return;
+    }
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      pass
+    );
+
+    const userUID = userCredential.user.uid;
+    const userData = {
+      userID: userUID,
+      fullName,
+      email,
+      password: pass,
+      organized: [],
+      isOrganiser: false,
+    };
+    const userDocRef = doc(collection(db, "users"), userUID);
+    await setDoc(userDocRef, userData);
+    navigate("/events");
+  };
 
   return (
     <div>
@@ -23,6 +56,13 @@ export default function Signup() {
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 items-center mt-8"
       >
+        <InputField
+          text="Full Name :"
+          type="tex"
+          value={fullName}
+          setValue={setFullName}
+          placeholder="John Doe"
+        />
         <InputField
           text="Email :"
           type="text"
@@ -44,6 +84,7 @@ export default function Signup() {
           setValue={setConPass}
           placeholder="confirm password"
         />
+        <div className="text-red-500">{errorMessage}</div>
         <SubmitButton text="Signup" />
         <p>
           Already Have an Account ?{" "}

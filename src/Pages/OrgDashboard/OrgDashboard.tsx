@@ -4,7 +4,7 @@ import Heading from "../../GlobalUI/Heading";
 export default function OrgDashboard() {
   return (
     <div>
-      <Heading css="">Dashboard</Heading>
+      <Heading css="">Event Management</Heading>
     </div>
   );
 }

@@ -4,11 +4,11 @@ import logo1 from "../Images/logo1.png";
 import closed from "../Images/closedburger.svg";
 import MobileNavBar from "./MobileNavBar";
 import OnlyDesktop from "../GlobalUI/OnlyDesktop";
+import Logout from "../Utils/Logout";
 
-export default function PageHeader({ isOrg }: { isOrg: boolean }) {
+export default function PageHeader({ isOrg, isConnected }: PageHeaderProps) {
   //
   const [burgerOpen, setBurgerOpen] = useState<boolean>(false);
-  const [isConnected, setIsConnected] = useState<boolean>(false);
 
   return (
     <div className="w-[95vw] mx-auto mt-2">
@@ -28,15 +28,31 @@ export default function PageHeader({ isOrg }: { isOrg: boolean }) {
           <OnlyDesktop css="flex gap-4 items-center">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events">Events</NavLink>
-            {isOrg ? (
-              <NavLink to="/dashboard">Dashboard</NavLink>
-            ) : (
-              <NavLink to="/signup">Signup</NavLink>
-            )}
             {isConnected ? (
               <NavLink to="/profile">Profile</NavLink>
             ) : (
               <NavLink to="/login">Login</NavLink>
+            )}
+            {isOrg && (
+              <NavLink
+                to="/event-management
+            "
+              >
+                Management
+              </NavLink>
+            )}
+            {isConnected && (
+              <button
+                onClick={async () => {
+                  let status = await Logout();
+                  if (status) {
+                  } else {
+                    console.log("there is a problem logging out");
+                  }
+                }}
+              >
+                Logout
+              </button>
             )}
           </OnlyDesktop>
           <div>
@@ -66,3 +82,8 @@ export default function PageHeader({ isOrg }: { isOrg: boolean }) {
     </div>
   );
 }
+
+type PageHeaderProps = {
+  isOrg: boolean;
+  isConnected: boolean;
+};

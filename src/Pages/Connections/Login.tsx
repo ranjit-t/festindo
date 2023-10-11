@@ -3,17 +3,26 @@ import Heading from "../../GlobalUI/Heading";
 import InputField from "../../GlobalUI/InputField";
 import SubmitButton from "../../GlobalUI/SubmitButton";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Firebase/config";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting");
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+      // setErrorMessage("logged in");
+      navigate("/events");
+    } catch (error) {
+      setErrorMessage("Oups, il y a une erreur");
+    }
   };
 
   const navigate = useNavigate();
-
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
 
   return (
     <div>
@@ -36,7 +45,7 @@ export default function Login() {
           setValue={setEmail}
           placeholder="password"
         />
-
+        <div className="text-red-500">{errorMessage}</div>
         <SubmitButton text="Login" />
         <p className="text-sm">
           Forgot password ?{" "}
