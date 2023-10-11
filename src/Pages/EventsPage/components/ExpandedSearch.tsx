@@ -23,7 +23,7 @@ export default function ExpandedSearch({
   };
 
   return (
-    <div className="fixed top-[25vh] left-[10vw]">
+    <div className="fixed top-[25vh] left-[10vw] z-50">
       <div className="flex flex-col items-center justify-center mx-auto mb-4 bg-white custom-box-shadow  border border-1 rounded-[20px]  h-[50vh] w-[80vw] relative">
         <Heading css="-mt-10 mb-10">Search An Event</Heading>
         <div className="mt-6 mb-2 w-[90vw]  flex justify-center relative ">

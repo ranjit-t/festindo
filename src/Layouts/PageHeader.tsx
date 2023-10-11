@@ -7,7 +7,11 @@ import OnlyDesktop from "../GlobalUI/OnlyDesktop";
 import Logout from "../Utils/Logout";
 import eventStore from "../Store/eventStore";
 
-export default function PageHeader({ isOrg, isConnected }: PageHeaderProps) {
+export default function PageHeader({
+  isOrg,
+  isConnected,
+  setPageDelay,
+}: PageHeaderProps) {
   //
   const [burgerOpen, setBurgerOpen] = useState<boolean>(false);
 
@@ -47,6 +51,7 @@ export default function PageHeader({ isOrg, isConnected }: PageHeaderProps) {
             {isConnected && (
               <button
                 onClick={async () => {
+                  setPageDelay((prev) => !prev);
                   let status = await Logout();
                   if (status) {
                   } else {
@@ -100,4 +105,5 @@ export default function PageHeader({ isOrg, isConnected }: PageHeaderProps) {
 type PageHeaderProps = {
   isOrg: boolean;
   isConnected: boolean;
+  setPageDelay: CustomDispatch<boolean>;
 };

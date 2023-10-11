@@ -6,7 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase/config";
 
-export default function Login() {
+export default function Login({
+  setPageDelay,
+}: {
+  setPageDelay: CustomDispatch<boolean>;
+}) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -15,7 +19,7 @@ export default function Login() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, pass);
-      // setErrorMessage("logged in");
+      setPageDelay((prev) => !prev);
       navigate("/events");
     } catch (error) {
       setErrorMessage("Oups, il y a une erreur");

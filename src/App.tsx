@@ -24,16 +24,36 @@ function App() {
     setIsOrg(signedUser?.isOrganiser || false);
   }, [signedUser]);
 
+  const [pageDelay, setPageDelay] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPageDelay(false);
+    }, 1000);
+  }, [pageDelay]);
+
+  if (pageDelay) {
+    return (
+      <div className="lds-dual-ring flex justify-center w-screen items-center h-screen"></div>
+    );
+  }
   return (
     <Router>
       <div className="App ">
         <div className="min-h-[75vh]">
-          <PageHeader isOrg={isOrg} isConnected={isConnected} />
+          <PageHeader
+            isOrg={isOrg}
+            isConnected={isConnected}
+            setPageDelay={setPageDelay}
+          />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/events" element={<Events />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/Login" element={<Login />} />
+            <Route
+              path="/Login"
+              element={<Login setPageDelay={setPageDelay} />}
+            />
             <Route path="/event-management" element={<OrgDashboard />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
