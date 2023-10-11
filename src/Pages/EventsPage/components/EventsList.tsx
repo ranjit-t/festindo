@@ -1,14 +1,23 @@
-import { useState } from "react";
-import SecHeading from "../../../GlobalUI/SecHeading";
+import { useEffect, useState } from "react";
 import EventsType from "../../../Types/EventsType";
 import ExpandedSearch from "./ExpandedSearch";
 import TriggerSearch from "./TriggerSearch";
+import eventStore from "../../../Store/eventStore";
+import { events } from "../../../Data/eventsData";
+import EventItem from "./EventItem";
 
-export default function EventsList({
-  events,
-  expanded,
-  setExpanded,
-}: EventsListProps) {
+export default function EventsList({ expanded, setExpanded }: EventsListProps) {
+  const { country } = eventStore();
+  const selectedCountry = country;
+  const [filteredEvents, setfilteredEvents] = useState(events);
+
+  useEffect(() => {
+    let filter = events.filter((event) => event.country === selectedCountry);
+
+    setfilteredEvents(country === "" ? events : filter);
+    // console.log(filteredEvents);
+  }, [country]);
+
   return (
     <div>
       <div
@@ -22,41 +31,10 @@ export default function EventsList({
       </div>
       <TriggerSearch expanded={expanded} setExpanded={setExpanded} />
       <div className="grid grid-cols-1 sm:grid-cols-2  justify-between sm:max-w-[90vw]">
-        {events.map((event: EventsType) => {
-          const [imageLoaded, setImageLoaded] = useState(false);
-          const onLoad = () => {
-            setImageLoaded(true);
-          };
-
+        {filteredEvents.map((event: EventsType) => {
           return (
-            <div
-              key={event.id}
-              className="border border-1 border-black p-2 m-4  cursor-pointer rounded-lg max-w-[500px] "
-            >
-              <div className="relative max-h-[500px]">
-                <img
-                  src={event.photos[0]}
-                  alt=""
-                  className="hidden"
-                  onLoad={onLoad}
-                />
-                {imageLoaded ? (
-                  <img
-                    src={event.photos[0]}
-                    alt=""
-                    className="h-[250px] lg:h-[300px] w-full object-cover"
-                  />
-                ) : (
-                  <div className="h-[250px] lg:h-[300px] animate-pulse w-full bg-gray-100"></div>
-                )}
-              </div>
-
-              <div className="p-2 flex flex-col gap-2">
-                <SecHeading css="">{event.title}</SecHeading>
-                <p className="truncate max-w-[90%] text-gray-600">
-                  {event.description}
-                </p>
-              </div>
+            <div key={event.id}>
+              <EventItem event={event} />{" "}
             </div>
           );
         })}
@@ -66,7 +44,6 @@ export default function EventsList({
 }
 
 type EventsListProps = {
-  events: EventsType[];
   expanded: boolean;
   setExpanded: CustomDispatch<boolean>;
 };

@@ -14,7 +14,7 @@ export default function MobileNavBar({
   };
 
   return (
-    <div className="fixed top-0 left-0 bg-black text-white w-screen h-screen block open-navBar ">
+    <div className="fixed top-0 left-0 bg-black text-white w-screen h-screen block open-navBar z-50">
       <div className="flex flex-col gap-4 justify-center items-center w-screen h-screen text-2xl">
         <img
           src={open}
