@@ -5,10 +5,13 @@ import closed from "../Images/closedburger.svg";
 import MobileNavBar from "./MobileNavBar";
 import OnlyDesktop from "../GlobalUI/OnlyDesktop";
 import Logout from "../Utils/Logout";
+import eventStore from "../Store/eventStore";
 
 export default function PageHeader({ isOrg, isConnected }: PageHeaderProps) {
   //
   const [burgerOpen, setBurgerOpen] = useState<boolean>(false);
+
+  const { country, changeCountry } = eventStore();
 
   return (
     <div className="w-[95vw] mx-auto mt-2">
@@ -76,9 +79,18 @@ export default function PageHeader({ isOrg, isConnected }: PageHeaderProps) {
         )}
       </div>
       <div className="flex justify-end">
-        <select name="" id="">
-          <option value="france">France</option>
-          <option value="france">USA</option>
+        <select
+          onChange={(e) => {
+            changeCountry(e.target.value);
+          }}
+          value={country}
+          className="country-text"
+        >
+          <option value="" className="text-red-600">
+            Country
+          </option>
+          <option value="France">France</option>
+          <option value="USA">USA</option>
         </select>
       </div>
     </div>

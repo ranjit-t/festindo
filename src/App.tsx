@@ -13,7 +13,6 @@ import Login from "./Pages/Connections/Login";
 import useUserChange from "./Firebase/useUserChange";
 
 function App() {
-  const [country, setcountry] = useState<string>("");
   const [isOrg, setIsOrg] = useState<boolean>(false);
 
   let signedUser = useUserChange();

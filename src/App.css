@@ -5,6 +5,12 @@
 
 .specialFont {
 }
+.country-text {
+  font-size: 17px;
+  background: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .open-navBar {
   animation: slidein 0.4s linear;

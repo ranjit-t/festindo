@@ -3,6 +3,8 @@ import Heading from "../../GlobalUI/Heading";
 import { events } from "../../Data/eventsData";
 import EventsList from "./components/EventsList";
 import TriggerSearch from "./components/TriggerSearch";
+import filterEvents from "../../Store/filterEvents";
+import eventStore from "../../Store/eventStore";
 
 export default function Events() {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -15,6 +17,9 @@ export default function Events() {
     setExpanded(false);
   };
 
+  const { country } = eventStore();
+  const filteredEvents = filterEvents(country, events);
+
   return (
     <div className="flex flex-col items-center">
       <Heading css="">Events</Heading>
@@ -23,9 +28,8 @@ export default function Events() {
         handleSearchClick={handleSearchClick}
       />
       <EventsList
-        events={events}
+        events={filteredEvents}
         expanded={expanded}
-        handleExpandedClose={handleExpandedClose}
         handleExpandedClose={handleExpandedClose}
       />
     </div>
