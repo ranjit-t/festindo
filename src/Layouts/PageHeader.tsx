@@ -66,12 +66,14 @@ export default function PageHeader({ isOrg, isConnected }: PageHeaderProps) {
             />
           </div>
         </div>
-        <MobileNavBar
-          burgerOpen={burgerOpen}
-          setBurgerOpen={setBurgerOpen}
-          isOrg={isOrg}
-          isConnected={isConnected}
-        />
+        {burgerOpen && (
+          <MobileNavBar
+            burgerOpen={burgerOpen}
+            setBurgerOpen={setBurgerOpen}
+            isOrg={isOrg}
+            isConnected={isConnected}
+          />
+        )}
       </div>
       <div className="flex justify-end">
         <select name="" id="">

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import search from "../../../Images/search.svg";
+import Heading from "../../../GlobalUI/Heading";
+import cancel from "../../../Images/cancel.svg";
 
 export default function ExpandedSearch({ handleExpandedClose }) {
   const [date, setDate] = useState("");
@@ -18,7 +20,8 @@ export default function ExpandedSearch({ handleExpandedClose }) {
 
   return (
     <div className="fixed top-[25vh] left-[10vw]">
-      <div className="flex flex-col items-center justify-center mx-auto mb-4 bg-white custom-box-shadow bg-gradient-to-r from-cyan-500 to-blue-500 border border-1 rounded-[20px]  h-[50vh] w-[80vw] relative">
+      <div className="flex flex-col items-center justify-center mx-auto mb-4 bg-white custom-box-shadow  border border-1 rounded-[20px]  h-[50vh] w-[80vw] relative">
+        <Heading css="-mt-10 mb-10">Search An Event</Heading>
         <div className="mt-6 mb-2 w-[90vw]  flex justify-center relative ">
           <div className="border border-1 rounded-lg border-black p-2 py-4 sm:py-2 text-lg flex flex-col sm:flex-row gap-8  sm:gap-6 max-w-[80%] bg-white">
             <input
@@ -49,10 +52,10 @@ export default function ExpandedSearch({ handleExpandedClose }) {
           <img src={search} alt="" className="w-6  ml-2" />
         </div>
         <div
-          className="bg-black text-white rounded-full px-4 py-2 absolute -top-2 -right-2 cursor-pointer ml-2"
+          className=" bg-white rounded-full absolute -top-1 -right-1 cursor-pointer ml-2"
           onClick={handleExpandedClose}
         >
-          X
+          <img src={cancel} alt="X" className="w-8" />
         </div>
       </div>
     </div>

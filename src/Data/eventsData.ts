@@ -11,6 +11,7 @@ export let events = [
     photos: [
       "https://images.unsplash.com/photo-1527075240784-552cddfbb143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2952&q=80",
     ],
+    country: "France",
   },
   {
     id: "54321",
@@ -23,6 +24,7 @@ export let events = [
     photos: [
       "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     ],
+    country: "France",
   },
   {
     id: "67890",
@@ -35,6 +37,7 @@ export let events = [
     photos: [
       "https://images.unsplash.com/photo-1585607344893-43a4bd91169a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     ],
+    country: "USA",
   },
   {
     id: "98765",
@@ -47,6 +50,7 @@ export let events = [
     photos: [
       "https://images.unsplash.com/photo-1597811119369-748db0973125?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     ],
+    country: "France",
   },
   {
     id: "23456",
@@ -59,5 +63,6 @@ export let events = [
     photos: [
       "https://images.unsplash.com/photo-1592843997881-cab3860b1067?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     ],
+    country: "USA",
   },
 ];
