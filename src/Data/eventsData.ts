@@ -10,7 +10,8 @@ export let events: EventsType[] = [
     address: "123 Main Street, Cityville, USA",
     ticketPrice: 50.0,
     photos: [
-      "https://images.unsplash.com/photo-1527075240784-552cddfbb143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2952&q=80",
+      // "https://images.unsplash.com/photo-1527075240784-552cddfbb143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2952&q=80",
+      "https://plus.unsplash.com/premium_photo-1674118771197-de18d929a7c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80",
     ],
     country: "France",
   },
