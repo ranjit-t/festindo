@@ -17,7 +17,7 @@ export default function EventsList({ expanded, setExpanded }: EventsListProps) {
     let filter = events
       .filter((event) => event.country === selectedCountry)
       .filter((event: EventsType) =>
-        event.title.toLowerCase().includes(byCity.toLowerCase())
+        event.city.toLowerCase().includes(byCity.toLowerCase())
       );
     setfilteredEvents(country === "" ? events : filter);
   }, [country, byCity]);
@@ -46,9 +46,9 @@ export default function EventsList({ expanded, setExpanded }: EventsListProps) {
         </div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2  sm:max-w-[80vw] ">
-        {filteredEvents.map((event: EventsType) => {
+        {filteredEvents.map((event: EventsType, idx) => {
           return (
-            <div key={event.id}>
+            <div key={idx}>
               <EventItem event={event} />{" "}
             </div>
           );
