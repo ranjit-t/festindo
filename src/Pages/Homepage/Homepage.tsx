@@ -25,10 +25,10 @@ export default function Homepage() {
         alt="Banner"
         className="max-h-[550px] w-screen object-cover "
       />
-      <div className="flex justify-start w-[70vw]">
+      <div className="flex justify-start w-[80vw] sm:w-[70vw]">
         <Heading css="">Countries</Heading>
       </div>
-      <div className="mt-4 flex gap-8 overflow-x-scroll px-[5vw] sm:px-[10vw] max-w-[100vw]   sm:max-w-[90vw] countries-container ">
+      <div className="mt-4 flex gap-8 overflow-x-scroll px-[5vw] sm:px-[10vw] max-w-[100vw]  sm:max-w-[90vw] countries-container ">
         <div
           className="flex flex-col items-center  font-bold text-lg border border-1 border-black rounded-lg p-2 cursor-pointer min-w-[300px] overflow-hidden"
           onClick={() => {
