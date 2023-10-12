@@ -41,7 +41,7 @@ export default function Homepage() {
             className="w-[300px] h-[200px] object-cover transition-transform hover:scale-110"
             width="300px"
           />
-          <p className="mt-2">France</p>
+          <p className="mt-3">France</p>
         </div>
         <div
           className="flex flex-col items-center  font-bold text-lg border border-1 border-black rounded-lg p-2 cursor-pointer min-w-[300px] overflow-hidden"
@@ -54,7 +54,7 @@ export default function Homepage() {
             alt="UK"
             className="w-[300px] h-[200px] object-cover transition-transform hover:scale-110"
           />
-          <p className="mt-2">UK</p>
+          <p className="mt-3">UK</p>
         </div>
         <div
           className="flex flex-col items-center  font-bold text-lg border border-1 border-black rounded-lg p-2 cursor-pointer min-w-[300px] overflow-hidden"
@@ -67,7 +67,7 @@ export default function Homepage() {
             alt="USA"
             className="w-[300px] h-[200px] object-cover transition-transform hover:scale-110"
           />
-          <p className="mt-2">USA</p>
+          <p className="mt-3">USA</p>
         </div>
       </div>
     </div>
