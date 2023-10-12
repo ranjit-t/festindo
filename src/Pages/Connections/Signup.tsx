@@ -4,18 +4,25 @@ import InputField from "../../GlobalUI/InputField";
 import SubmitButton from "../../GlobalUI/SubmitButton";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../Firebase/config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
+import useUserChange from "../../Firebase/useUserChange";
 
 export default function Signup() {
   //
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [conPass, setConPass] = useState("");
   const [fullName, setFullName] = useState("");
 
   const navigate = useNavigate();
+  let signedUser = useUserChange();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +41,10 @@ export default function Signup() {
       email,
       pass
     );
+    // Send email verification
+    await sendEmailVerification(userCredential.user);
+
+    setSuccessMessage("successfully signup! please verify your email");
 
     const userUID = userCredential.user.uid;
     const userData = {
@@ -46,8 +57,18 @@ export default function Signup() {
     };
     const userDocRef = doc(collection(db, "users"), userUID);
     await setDoc(userDocRef, userData);
-    navigate("/events");
+    // navigate(-1);
+    navigate("/login");
   };
+
+  if (signedUser !== null) {
+    // navigate("/events");
+    return (
+      <div className="text-center mt-16">
+        You have already signed up and logged in !
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -85,6 +106,7 @@ export default function Signup() {
           placeholder="confirm password"
         />
         <div className="text-red-500">{errorMessage}</div>
+        <div className="text-green-500">{successMessage}</div>
         <SubmitButton text="Signup" />
         <p>
           Already Have an Account ?{" "}

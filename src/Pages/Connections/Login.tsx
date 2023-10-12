@@ -5,6 +5,7 @@ import SubmitButton from "../../GlobalUI/SubmitButton";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase/config";
+import useUserChange from "../../Firebase/useUserChange";
 
 export default function Login({
   setPageDelay,
@@ -15,18 +16,25 @@ export default function Login({
   const [pass, setPass] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  let signedUser = useUserChange();
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, pass);
+
       setPageDelay((prev) => !prev);
-      navigate("/events");
+      navigate(-1);
     } catch (error) {
       setErrorMessage("Oups, il y a une erreur");
     }
   };
 
-  const navigate = useNavigate();
+  if (signedUser !== null) {
+    // navigate("/events");
+    return <div className="text-center mt-16">You are already logged in !</div>;
+  }
 
   return (
     <div>
