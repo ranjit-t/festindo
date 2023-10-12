@@ -18,7 +18,7 @@ export default function SelectLabels({
   };
 
   return (
-    <div className="mt-8 text-xl ">
+    <div className=" text-xl ">
       <FormControl sx={{ m: 1, minWidth: 100 }}>
         <Select
           value={country}

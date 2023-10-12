@@ -19,8 +19,8 @@ export default function CountryPopup() {
   return (
     <>
       {visible && (
-        <div className="fixed  w-screen h-screen bg-transparent z-50 flex flex-col items-center justify-center">
-          <div className=" w-[70vw] h-[70vh] bg-white flex flex-col items-center justify-center mx-auto my-auto custom-box-shadow rounded-[30px]">
+        <div className="fixed  w-screen h-screen bg-transparent z-50 flex flex-col items-center top-[15vh] sm:top-0 sm:justify-center">
+          <div className=" sm:w-[70vw] w-screen h-[70vh] bg-white flex flex-col  items-center justify-center mx-auto  custom-box-shadow rounded-[30px]">
             <Heading css="">Choose Your Country</Heading>
 
             <div className="">

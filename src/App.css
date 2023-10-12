@@ -1,6 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Exo&family=Ubuntu&display=swap");
 .App {
   font-family: "Exo", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.countries-container {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.countries-container::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.countries-container > * {
+  box-shadow: 12px 10px 10px rgba(7, 7, 7, 0.4);
 }
 
 .specialFont {
