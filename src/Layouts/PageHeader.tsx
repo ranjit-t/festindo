@@ -7,6 +7,7 @@ import OnlyDesktop from "../GlobalUI/OnlyDesktop";
 
 import eventStore from "../Store/eventStore";
 import LogoutButton from "../GlobalUI/LogoutButton";
+import SelectLabels from "../GlobalUI/SelectLabels";
 
 export default function PageHeader({
   isOrg,
@@ -64,19 +65,20 @@ export default function PageHeader({
         )}
       </div>
       <div className="flex justify-end">
-        <select
+        <SelectLabels />
+        {/* <select
           onChange={(e) => {
             changeCountry(e.target.value);
           }}
           value={country}
-          className="country-text"
+          className="country-text outline-none  text-md"
         >
-          <option value="" className="text-red-600">
+          <option value="" className="text-red-600" disabled>
             Country
           </option>
           <option value="France">France</option>
           <option value="USA">USA</option>
-        </select>
+        </select> */}
       </div>
     </div>
   );

@@ -10,6 +10,8 @@
   background: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: "Exo", sans-serif;
+  background-color: #fff;
 }
 
 .open-navBar {

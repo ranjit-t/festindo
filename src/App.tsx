@@ -11,6 +11,7 @@ import Profile from "./Pages/Profile/Profile";
 import Signup from "./Pages/Connections/Signup";
 import Login from "./Pages/Connections/Login";
 import useUserChange from "./Firebase/useUserChange";
+import CountryPopup from "./Layouts/CountryPopup";
 
 function App() {
   const [isOrg, setIsOrg] = useState<boolean>(false);
@@ -40,6 +41,7 @@ function App() {
   return (
     <Router>
       <div className="App ">
+        <CountryPopup />
         <div className="min-h-[75vh]">
           <PageHeader
             isOrg={isOrg}
