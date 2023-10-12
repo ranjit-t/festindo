@@ -25,9 +25,9 @@ export default function ExpandedSearch({
   return (
     <div className="fixed top-[25vh] left-[10vw] z-50">
       <div className="flex flex-col items-center justify-center mx-auto mb-4 bg-white custom-box-shadow  border border-1 rounded-[20px]  h-[50vh] w-[80vw] relative">
-        <Heading css="-mt-10 mb-10">Search An Event</Heading>
+        <Heading css="mb-0 sm:mb-4">Search An Event</Heading>
         <div className="mt-6 mb-2 w-[90vw]  flex justify-center relative ">
-          <div className="border border-1 rounded-lg border-black p-2 py-4 sm:py-2 text-lg flex flex-col sm:flex-row gap-8  sm:gap-6 max-w-[80%] bg-white">
+          <div className="border border-1 rounded-lg border-black p-8 sm:p-4 text-lg flex flex-col sm:flex-row gap-10  sm:gap-6 max-w-[80%] bg-white">
             <input
               type="text"
               placeholder="Event Name"

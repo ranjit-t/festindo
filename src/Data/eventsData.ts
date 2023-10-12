@@ -14,6 +14,7 @@ export let events: EventsType[] = [
       "https://plus.unsplash.com/premium_photo-1674118771197-de18d929a7c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2832&q=80",
     ],
     country: "France",
+    city: "Paris",
   },
   {
     id: 54321,
@@ -27,6 +28,7 @@ export let events: EventsType[] = [
       "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     ],
     country: "France",
+    city: "Lyon",
   },
   {
     id: 67890,
@@ -34,12 +36,13 @@ export let events: EventsType[] = [
     description: "Taste delicious dishes from around the world!",
     organizerName: "Foodie Delights",
     organizerId: "23456",
-    address: "789 Food Street, Tastyville, USA",
+    address: "789 Food Street, Texas, USA",
     ticketPrice: 20.0,
     photos: [
       "https://images.unsplash.com/photo-1585607344893-43a4bd91169a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     ],
     country: "USA",
+    city: "Texas",
   },
   {
     id: 98765,
@@ -53,6 +56,7 @@ export let events: EventsType[] = [
       "https://images.unsplash.com/photo-1597811119369-748db0973125?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     ],
     country: "France",
+    city: "Paris",
   },
   {
     id: 23456,
@@ -66,5 +70,6 @@ export let events: EventsType[] = [
       "https://images.unsplash.com/photo-1592843997881-cab3860b1067?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
     ],
     country: "USA",
+    city: "California",
   },
 ];

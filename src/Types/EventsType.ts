@@ -8,6 +8,7 @@ type EventsType = {
   ticketPrice: number;
   photos: string[];
   country: string;
+  city: string;
 };
 
 export default EventsType;

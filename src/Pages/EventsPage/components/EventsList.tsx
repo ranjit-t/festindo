@@ -11,12 +11,16 @@ export default function EventsList({ expanded, setExpanded }: EventsListProps) {
   const selectedCountry = country;
   const [filteredEvents, setfilteredEvents] = useState(events);
 
-  useEffect(() => {
-    let filter = events.filter((event) => event.country === selectedCountry);
+  const [byCity, setByCity] = useState("");
 
+  useEffect(() => {
+    let filter = events
+      .filter((event) => event.country === selectedCountry)
+      .filter((event: EventsType) =>
+        event.title.toLowerCase().includes(byCity.toLowerCase())
+      );
     setfilteredEvents(country === "" ? events : filter);
-    // console.log(filteredEvents);
-  }, [country]);
+  }, [country, byCity]);
 
   return (
     <div>
@@ -29,8 +33,19 @@ export default function EventsList({ expanded, setExpanded }: EventsListProps) {
       >
         {expanded && <ExpandedSearch setExpanded={setExpanded} />}
       </div>
-      <TriggerSearch expanded={expanded} setExpanded={setExpanded} />
-      <div className="grid grid-cols-1 sm:grid-cols-2  justify-between sm:max-w-[90vw]">
+      <div className={filteredEvents.length === 0 ? "w-[75vw] mx-auto" : ""}>
+        <TriggerSearch
+          expanded={expanded}
+          setExpanded={setExpanded}
+          setByCity={setByCity}
+        />
+      </div>
+      {filteredEvents.length === 0 && (
+        <div className="flex justify-center w-[100vw] ">
+          <p className="mt-16">Sorry, Nothing Found</p>
+        </div>
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2  sm:max-w-[80vw] ">
         {filteredEvents.map((event: EventsType) => {
           return (
             <div key={event.id}>
