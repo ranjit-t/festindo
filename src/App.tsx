@@ -34,7 +34,7 @@ function App() {
 
   if (pageDelay) {
     return (
-      <div className="lds-dual-ring flex justify-center w-screen items-center h-screen"></div>
+      <div className="lds-dual-ring flex justify-center w-screen mt-[40vh] sm:mt-0 sm:items-center h-screen"></div>
     );
   }
   return (

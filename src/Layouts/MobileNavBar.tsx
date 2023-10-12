@@ -2,12 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import open from "../Images/openburger.svg";
 import "../App.css";
+import LogoutButton from "../GlobalUI/LogoutButton";
 
 export default function MobileNavBar({
   burgerOpen,
   setBurgerOpen,
   isOrg,
   isConnected,
+  setPageDelay,
 }: MobileNavBarProps) {
   const toggleMenu = () => {
     setBurgerOpen((prev) => !prev);
@@ -38,6 +40,17 @@ export default function MobileNavBar({
             Profile
           </NavLink>
         )}
+        {isConnected && <LogoutButton setPageDelay={setPageDelay} />}
+        {!isConnected && (
+          <NavLink to="/login" onClick={toggleMenu}>
+            Login
+          </NavLink>
+        )}
+        {!isConnected && (
+          <NavLink to="/signup" onClick={toggleMenu}>
+            Signup
+          </NavLink>
+        )}
       </div>
     </div>
   );
@@ -48,4 +61,5 @@ interface MobileNavBarProps {
   setBurgerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOrg: boolean;
   isConnected: boolean;
+  setPageDelay: CustomDispatch<boolean>;
 }

@@ -4,8 +4,9 @@ import logo1 from "../Images/logo1.png";
 import closed from "../Images/closedburger.svg";
 import MobileNavBar from "./MobileNavBar";
 import OnlyDesktop from "../GlobalUI/OnlyDesktop";
-import Logout from "../Utils/Logout";
+
 import eventStore from "../Store/eventStore";
+import LogoutButton from "../GlobalUI/LogoutButton";
 
 export default function PageHeader({
   isOrg,
@@ -35,33 +36,11 @@ export default function PageHeader({
           <OnlyDesktop css="flex gap-4 items-center">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events">Events</NavLink>
-            {isConnected ? (
-              <NavLink to="/profile">Profile</NavLink>
-            ) : (
-              <NavLink to="/login">Login</NavLink>
-            )}
-            {isOrg && (
-              <NavLink
-                to="/event-management
-            "
-              >
-                Management
-              </NavLink>
-            )}
-            {isConnected && (
-              <button
-                onClick={async () => {
-                  setPageDelay((prev) => !prev);
-                  let status = await Logout();
-                  if (status) {
-                  } else {
-                    console.log("there is a problem logging out");
-                  }
-                }}
-              >
-                Logout
-              </button>
-            )}
+            {!isConnected && <NavLink to="/login">Login</NavLink>}
+            {!isConnected && <NavLink to="/signup">Signup</NavLink>}
+            {isConnected && <NavLink to="/profile">Profile</NavLink>}
+            {isOrg && <NavLink to="/event-management">Management</NavLink>}
+            {isConnected && <LogoutButton setPageDelay={setPageDelay} />}
           </OnlyDesktop>
           <div>
             <img
@@ -80,6 +59,7 @@ export default function PageHeader({
             setBurgerOpen={setBurgerOpen}
             isOrg={isOrg}
             isConnected={isConnected}
+            setPageDelay={setPageDelay}
           />
         )}
       </div>
