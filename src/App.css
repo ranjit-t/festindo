@@ -4,6 +4,41 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.active {
+  text-decoration: none;
+  position: relative;
+}
+
+.active::before,
+.active::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1.5px; /* Increase the height for longer lines */
+  background-color: #000; /* Change to your desired underline color */
+  top: 100%; /* Adjust the top position for vertical alignment */
+  animation: underline-animation 0.5s ease forwards;
+}
+
+.active::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.active::after {
+  right: 50%;
+  transform: translateX(50%);
+}
+
+@keyframes underline-animation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%; /* Adjust the width for longer lines */
+  }
+}
+
 .countries-container {
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */

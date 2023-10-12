@@ -31,8 +31,8 @@ export default function MobileNavBar({
           Events
         </NavLink>
         {isOrg && (
-          <NavLink to="/dashboard" onClick={toggleMenu}>
-            Dashboard
+          <NavLink to="/event-management" onClick={toggleMenu}>
+            Event Management
           </NavLink>
         )}
         {isConnected && (

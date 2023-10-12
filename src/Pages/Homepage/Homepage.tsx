@@ -26,7 +26,7 @@ export default function Homepage() {
         className="max-h-[550px] w-screen object-cover "
       />
       <div className="flex justify-start w-[80vw] sm:w-[70vw]">
-        <Heading css="">Countries</Heading>
+        <Heading css="underline underline-offset-[6px]">Countries</Heading>
       </div>
       <div className="mt-4 flex gap-8 overflow-x-scroll px-[5vw] sm:px-[10vw] max-w-[100vw]  sm:max-w-[90vw] countries-container ">
         <div
