@@ -6,7 +6,6 @@ import Homepage from "./Pages/Homepage/Homepage";
 import Events from "./Pages/EventsPage/Events";
 import PageHeader from "./Layouts/PageHeader";
 import Footer from "./Layouts/Footer/Footer";
-import OrgDashboard from "./Pages/OrgDashboard/OrgDashboard";
 import Profile from "./Pages/Profile/Profile";
 import Signup from "./Pages/Connections/Signup";
 import Login from "./Pages/Connections/Login";
@@ -15,6 +14,7 @@ import CountryPopup from "./Layouts/CountryPopup";
 import SingleEvent from "./Pages/SingleEvent/SingleEvent";
 import Notfound from "./Pages/NotFound/NotFound";
 import OrganiserProfile from "./Pages/OrganiserProfile/OrganiserProfile";
+import MyDashboard from "./Pages/MyDashboard/MyDashboard";
 
 function App() {
   const [isOrg, setIsOrg] = useState<boolean>(false);
@@ -65,7 +65,7 @@ function App() {
               path="/Login"
               element={<Login setPageDelay={setPageDelay} />}
             />
-            <Route path="/event-management" element={<OrgDashboard />} />
+            <Route path="/event-management" element={<MyDashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/*" element={<Notfound />} />
           </Routes>

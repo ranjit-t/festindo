@@ -15,28 +15,39 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
   const inActiveMenu = "text-[14px]";
 
   return (
-    <div className="flex flex-col items-end">
+    <div className="flex flex-col items-center sm:items-end mt-8">
       <p className="font-bold text-lg">Hello {signedUser?.fullName} ! </p>
-      {signedUser?.isOrganiser ? (
-        <div className="flex flex-col items-end  my-4 text-gray-600">
-          <p>You are an organiser,</p>
-          <button
-            onClick={() => {
-              navigate("/event-management");
-            }}
-            className="font-extrabold text-black"
-          >
-            Go to Event Management{" "}
-          </button>
-          <p>to host your next event.</p>
+      <div className="flex flex-col-reverse items-center sm:flex-row-reverse  w-full sm:justify-between">
+        {signedUser?.isOrganiser ? (
+          <div className="flex flex-col items-end  my-4 text-gray-600">
+            <p>You are an organiser,</p>
+            <button
+              onClick={() => {
+                navigate("/event-management");
+              }}
+              className="font-extrabold text-black"
+            >
+              Go to Event Management{" "}
+            </button>
+            <p>to host your next event.</p>
+          </div>
+        ) : (
+          <div className="flex flex-col items-end gap-2 my-4">
+            <p>Want to organise events ? </p>{" "}
+            <button className="font-[900]">Go to Profile Settings and</button>
+            <p>change your account type.</p>
+          </div>
+        )}
+        <div>
+          {signedUser?.profilePhoto && (
+            <img
+              src={signedUser?.profilePhoto}
+              alt="Photo"
+              className="w-[100px] h-[100px] object-fit rounded-full sm:mr-8"
+            />
+          )}
         </div>
-      ) : (
-        <div className="flex flex-col items-end gap-2 my-4">
-          <p>Do you want to organise events ? </p>{" "}
-          <button className="font-[900]">Go to Profile Settings and</button>
-          <p>change your account type.</p>
-        </div>
-      )}
+      </div>
       <div className="bg-black text-white flex justify-evenly  gap-4 sm:w-[470px] p-4 my-4">
         <button
           onClick={() => handleMenuClick(1)}

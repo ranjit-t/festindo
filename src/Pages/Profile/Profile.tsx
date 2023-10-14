@@ -27,7 +27,7 @@ export default function Profile() {
   }
   return (
     <div className="flex flex-col w-[90vw] sm:w-[60vw] mx-auto items-center">
-      <Heading css="">Profile</Heading>
+      {/* <Heading css="">Profile</Heading> */}
       <div className="flex flex-col items-center">
         <ProfileMenu menuNum={menuNum} setMenuNum={setMenuNum} />
       </div>

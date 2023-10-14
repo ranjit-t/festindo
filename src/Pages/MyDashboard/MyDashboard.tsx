@@ -1,7 +1,7 @@
 import React from "react";
 import Heading from "../../GlobalUI/Heading";
 
-export default function OrgDashboard() {
+export default function MyDashboard() {
   return (
     <div>
       <Heading css="">Event Management</Heading>
