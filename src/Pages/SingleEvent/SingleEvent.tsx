@@ -45,7 +45,7 @@ export default function SingleEvent() {
             <strong className="font-bold text-lg">Organizer : </strong>
             <div
               className="flex items-center gap-2 ml-2 border border-1 p-2 cursor-pointer rounded-lg shadow-md specialFont"
-              onClick={() => navigate(`/organiser/${event?.organizerId}`)}
+              onClick={() => navigate(`/organizer/${event?.organizerId}`)}
             >
               <img
                 src="https://static.vecteezy.com/system/resources/thumbnails/009/972/776/small/people-icon-sign-symbol-design-free-png.png" //to be changed

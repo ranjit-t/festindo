@@ -58,7 +58,7 @@ function App() {
               path="/event/:pageCountry/:pageTitle/:pageId"
               element={<SingleEvent />}
             />
-            <Route path="/organiser/:uid" element={<OrganiserProfile />} />
+            <Route path="/organizer/:uid" element={<OrganiserProfile />} />
 
             <Route path="/signup" element={<Signup />} />
             <Route
