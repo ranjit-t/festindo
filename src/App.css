@@ -9,6 +9,11 @@
   position: relative;
 }
 
+:focus {
+  outline: none; /* no outline - for most browsers */
+  box-shadow: none; /* no box shadow - for some browsers or if you are using Bootstrap */
+}
+
 .active::before,
 .active::after {
   content: "";
@@ -54,8 +59,15 @@
   box-shadow: 12px 10px 10px rgba(7, 7, 7, 0.4);
 }
 
-.specialFont {
+.specialFont:hover {
+  background: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Exo", sans-serif;
+  background-color: #fff;
+  font-weight: 800;
 }
+
 .country-text {
   font-size: 17px;
   background: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);

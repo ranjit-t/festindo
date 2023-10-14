@@ -10,12 +10,10 @@ export default function EventPara({
   onClick?: () => void;
 }) {
   return (
-    <div>
+    <div className={css}>
       <p>
         <strong className="font-bold text-lg">{head} : </strong>
-        <span className={css} onClick={onClick}>
-          {content}
-        </span>
+        <span onClick={onClick}>{content}</span>
       </p>
     </div>
   );
