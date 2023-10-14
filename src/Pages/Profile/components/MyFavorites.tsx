@@ -5,7 +5,7 @@ export default function MyFavorites() {
     <div>
       <div>
         <p>Coming Soon!</p>
-        <p>Your favorite events will be shown here</p>
+        {/* <p>Your favorite events will be shown here</p> */}
       </div>
     </div>
   );

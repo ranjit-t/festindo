@@ -114,6 +114,8 @@ export default function ProfileSettings() {
           placeholder="email"
           value={email}
           setValue={setEmail}
+          css="text-gray-500"
+          disabled
         />
         {/* <InputField
           text="Bio :"

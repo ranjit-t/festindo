@@ -57,7 +57,7 @@ export default function OrganiserProfile() {
           <img
             src={organiser.profilePhoto}
             alt=""
-            className="w-32 h-32 object-cover rounded-full border border-1 border-black p-1"
+            className="w-32 h-32 object-cover rounded-full border border-1 border-black  shadow-lg"
           />
         )}
 

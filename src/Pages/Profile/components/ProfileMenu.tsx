@@ -43,7 +43,7 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
             <img
               src={signedUser?.profilePhoto}
               alt="Photo"
-              className="w-[100px] h-[100px] object-cover rounded-full sm:mr-8"
+              className="w-[100px] h-[100px] object-cover rounded-full sm:mr-8  border border-1 border-black shadow-lg"
             />
           )}
         </div>

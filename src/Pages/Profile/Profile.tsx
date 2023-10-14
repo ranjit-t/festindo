@@ -10,7 +10,7 @@ import MyFavorites from "./components/MyFavorites";
 export default function Profile() {
   let signedUser = useUserChange();
 
-  const [menuNum, setMenuNum] = useState(1);
+  const [menuNum, setMenuNum] = useState(3);
 
   const navigate = useNavigate();
 
