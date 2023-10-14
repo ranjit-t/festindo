@@ -7,7 +7,6 @@ export default function Events() {
   const [expanded, setExpanded] = useState<boolean>(false);
 
   useEffect(() => {
-    // Scroll to the top of the page when the component mounts
     window.scrollTo(0, 0);
   }, []);
 

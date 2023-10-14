@@ -6,11 +6,14 @@ import uk from "../../Images/uk.avif";
 import usa from "../../Images/usa.avif";
 import eventStore from "../../Store/eventStore";
 import { useNavigate } from "react-router-dom";
+import ScrollToTop from "../../Hooks/ScrollToTop";
 
 export default function Homepage() {
   const { changeCountry } = eventStore();
 
   const navigate = useNavigate();
+
+  ScrollToTop();
 
   const handleCountry = (country: string) => {
     changeCountry(country);

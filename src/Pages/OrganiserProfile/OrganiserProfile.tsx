@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Heading from "../../GlobalUI/Heading";
 import { useParams } from "react-router-dom";
+import ScrollToTop from "../../Hooks/ScrollToTop";
 
 export default function OrganiserProfile() {
   const { id } = useParams();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  ScrollToTop();
 
   return (
     <div className="flex flex-col items-center">

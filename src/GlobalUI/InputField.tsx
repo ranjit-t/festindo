@@ -14,7 +14,7 @@ export default function InputField({
         {text}
         <input
           type={type}
-          className="border border-1 border-black px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw]"
+          className="border border-1 border-gray-400 my-2 px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw]"
           onChange={(e) => {
             setValue(e.target.value);
           }}

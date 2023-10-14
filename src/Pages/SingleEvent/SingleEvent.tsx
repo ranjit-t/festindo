@@ -3,11 +3,14 @@ import { events } from "../../Data/eventsData";
 import { useNavigate, useParams } from "react-router-dom";
 import Heading from "../../GlobalUI/Heading";
 import EventPara from "../../GlobalUI/EventPara";
+import ScrollToTop from "../../Hooks/ScrollToTop";
 
 export default function SingleEvent() {
   const { pageId } = useParams();
   const event = events.find((event) => event.id === parseInt(pageId || "0"));
   const navigate = useNavigate();
+
+  ScrollToTop();
 
   return (
     <div className="flex flex-col items-center gap-6 w-[90vw] sm:w-[75vw] md:w-[60vw] mx-auto">

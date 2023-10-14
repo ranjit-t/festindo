@@ -21,7 +21,9 @@ function useUserChange() {
               fullName: userInfo.fullName,
               uid: user.uid,
               isOrganiser: userInfo.isOrganiser,
-              //   isOrganiser: true,
+              bio: userInfo.bio,
+              profilePhoto: userInfo.profilePhoto,
+              city: userInfo.city,
             });
           }
         }
@@ -41,4 +43,7 @@ type UserDetailsType = {
   fullName: string;
   uid: string;
   isOrganiser: boolean;
+  bio?: string;
+  city?: string;
+  profilePhoto?: string;
 };

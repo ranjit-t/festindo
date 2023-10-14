@@ -42,9 +42,15 @@ export default function Signup() {
       pass
     );
     // Send email verification
-    await sendEmailVerification(userCredential.user);
+    // await sendEmailVerification(userCredential.user);
 
-    setSuccessMessage("successfully signup! please verify your email");
+    // setSuccessMessage(
+    //   "successfully signup! check your inbox verify your email"
+    // );
+
+    setSuccessMessage(
+      "successfully signed up! check your inbox verify your email"
+    );
 
     const userUID = userCredential.user.uid;
     const userData = {
@@ -58,7 +64,13 @@ export default function Signup() {
     const userDocRef = doc(collection(db, "users"), userUID);
     await setDoc(userDocRef, userData);
     // navigate(-1);
-    navigate("/login");
+    // navigate("/login");
+    // location.href = "/login";
+    if (window.location.href.includes("festindo")) {
+      navigate(-1);
+    } else {
+      navigate("/events");
+    }
   };
 
   if (signedUser !== null) {
