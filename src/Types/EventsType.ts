@@ -1,9 +1,9 @@
 type EventsType = {
-  id: number;
+  id: number | string;
   title: string;
   description: string;
   organizerName: string;
-  organizerId: string;
+  organizerId: number | string;
   address: string;
   ticketPrice: number;
   photos?: string[];

@@ -25,11 +25,12 @@ export default function ProfileSettings() {
     if (signedUser) {
       setFullName(signedUser.fullName || "");
       setEmail(signedUser.email || "");
-      setBio(signedUser.bio || "");
+      setBio(signedUser?.bio || "");
       setCity(signedUser.city || "");
       setProfilePhoto(signedUser.profilePhoto || "");
       setIsOrganizer(signedUser.isOrganiser);
     }
+    console.log(bio);
   }, [signedUser]);
 
   const handleRadioChange = () => {
@@ -69,7 +70,7 @@ export default function ProfileSettings() {
           const updateUserDetails = {
             fullName,
             email,
-            bio,
+            bio: textToHtml(bio),
             city,
             profilePhoto: imageURL,
             isOrganiser: isOrganizer,
@@ -80,7 +81,7 @@ export default function ProfileSettings() {
           setSuccessMessage("Profile updated successfully!");
           setTimeout(() => {
             location.reload();
-          }, 2000);
+          }, 500);
         } catch (error) {
           // console.error("Error updating user document:", error);
           setPendingStatus(false);
@@ -124,14 +125,15 @@ export default function ProfileSettings() {
         <div>
           <label>
             Bio :
-            <textarea
-              placeholder="bio"
-              className="border border-1 border-gray-400  px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw] min-h-[100px]"
-              onChange={(e) => {
-                setBio(e.target.value);
+            <div
+              contentEditable
+              className="border border-1 border-gray-400 px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw] min-h-[100px]"
+              onBlur={(e) => {
+                setBio(e.target.innerHTML);
+                console.log(bio);
               }}
-              value={bio}
-            ></textarea>
+              dangerouslySetInnerHTML={{ __html: bio }}
+            ></div>
           </label>
         </div>
         <InputField
@@ -141,11 +143,13 @@ export default function ProfileSettings() {
           value={city}
           setValue={setCity}
         />
-        <img
-          src={profilePhoto}
-          alt="Profile"
-          className="w-[200px] h-[200px] object-cover rounded-full"
-        />
+        {profilePhoto && (
+          <img
+            src={profilePhoto}
+            alt="Profile"
+            className="w-[200px] h-[200px] object-cover rounded-full"
+          />
+        )}
 
         <label>
           Profile Photo :
@@ -194,4 +198,20 @@ export default function ProfileSettings() {
       </form>
     </div>
   );
+}
+
+function textToHtml(text: string) {
+  // Replace newline characters with <br> tags
+  const textWithLineBreaks = text.replace(/\n/g, "<br>");
+
+  // Replace URLs with anchor tags
+  const textWithLinks = textWithLineBreaks.replace(
+    /https?:\/\/\S+/g,
+    (url) => `<a href="${url}" target="_blank">${url}</a>`
+  );
+
+  // Wrap text in <p> tags
+  const htmlText = `<p>${textWithLinks}</p>`;
+
+  return htmlText;
 }
