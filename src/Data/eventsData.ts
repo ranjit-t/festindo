@@ -15,6 +15,7 @@ export let events: EventsType[] = [
     ],
     country: "France",
     city: "Paris",
+    category: "Music",
   },
   {
     id: 54321,

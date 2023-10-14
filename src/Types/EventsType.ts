@@ -6,9 +6,10 @@ type EventsType = {
   organizerId: string;
   address: string;
   ticketPrice: number;
-  photos: string[];
+  photos?: string[];
   country: string;
   city: string;
+  category?: string;
 };
 
 export default EventsType;

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Heading from "../../GlobalUI/Heading";
 import useUserChange from "../../Firebase/useUserChange";
 import ProfileMenu from "./components/ProfileMenu";
-import UpcomingEvents from "./components/UpcomingEvents";
-import PastEvents from "./components/PastEvents";
 import ProfileSettings from "./components/ProfileSettings";
 import { useNavigate } from "react-router-dom";
+import MyTickets from "./components/MyTickets";
+import MyFavorites from "./components/MyFavorites";
 
 export default function Profile() {
   let signedUser = useUserChange();
@@ -31,8 +31,8 @@ export default function Profile() {
       <div className="flex flex-col items-center">
         <ProfileMenu menuNum={menuNum} setMenuNum={setMenuNum} />
       </div>
-      {menuNum === 1 && <UpcomingEvents />}
-      {menuNum === 2 && <PastEvents />}
+      {menuNum === 1 && <MyTickets />}
+      {menuNum === 2 && <MyFavorites />}
       {menuNum === 3 && <ProfileSettings />}
     </div>
   );

@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import SecHeading from "../../../GlobalUI/SecHeading";
 import EventsType from "../../../Types/EventsType";
 import mappin from "../../../Images/mappin.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function EventItem({ event }: { event: EventsType }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const onLoad = () => {
     setImageLoaded(true);
   };
-
+  const navigate = useNavigate();
   return (
-    <div className="border border-1 border-black p-2 m-4  cursor-pointer rounded-lg max-w-[500px] overflow-hidden">
+    <div
+      className="border border-1 border-black p-2 m-4  cursor-pointer rounded-lg max-w-[500px] overflow-hidden"
+      onClick={() =>
+        navigate(`/event/${event.country}/${event.title}/${event.id}`)
+      }
+    >
       {event.photos ? (
         <div className="relative max-h-[500px]">
           <img

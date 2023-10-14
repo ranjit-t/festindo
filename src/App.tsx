@@ -12,6 +12,9 @@ import Signup from "./Pages/Connections/Signup";
 import Login from "./Pages/Connections/Login";
 import useUserChange from "./Firebase/useUserChange";
 import CountryPopup from "./Layouts/CountryPopup";
+import SingleEvent from "./Pages/SingleEvent/SingleEvent";
+import Notfound from "./Pages/NotFound/NotFound";
+import OrganiserProfile from "./Pages/OrganiserProfile/OrganiserProfile";
 
 function App() {
   const [isOrg, setIsOrg] = useState<boolean>(false);
@@ -51,6 +54,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/events" element={<Events />} />
+            <Route
+              path="/event/:pageCountry/:pageTitle/:pageId"
+              element={<SingleEvent />}
+            />
+            <Route path="/organiser/:id" element={<OrganiserProfile />} />
+
             <Route path="/signup" element={<Signup />} />
             <Route
               path="/Login"
@@ -58,6 +67,7 @@ function App() {
             />
             <Route path="/event-management" element={<OrgDashboard />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/*" element={<Notfound />} />
           </Routes>
         </div>
         <Footer />

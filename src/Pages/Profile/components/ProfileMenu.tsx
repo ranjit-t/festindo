@@ -14,19 +14,19 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
   return (
     <div className="flex flex-col items-end">
       <p>Hello {signedUser?.fullName} ! </p>
-      <div className="bg-black text-white flex  gap-4 sm:w-[470px] p-4 my-4">
+      <div className="bg-black text-white flex justify-evenly  gap-4 sm:w-[470px] p-4 my-4">
         <button
           onClick={() => handleMenuClick(1)}
           className={menuNum === 1 ? activeMenu : inActiveMenu}
         >
-          My Upcoming Events
+          My Tickets
         </button>
         <p className="hidden sm:block">|</p>
         <button
           onClick={() => handleMenuClick(2)}
           className={menuNum === 2 ? activeMenu : inActiveMenu}
         >
-          My Past Tickets
+          Favorites
         </button>
         <p className="hidden sm:block">|</p>
         <button
