@@ -3,17 +3,14 @@ import { NavLink } from "react-router-dom";
 import open from "../Images/openburger.svg";
 import "../App.css";
 import LogoutButton from "../GlobalUI/LogoutButton";
+import useUserChange from "../Firebase/useUserChange";
 
-export default function MobileNavBar({
-  burgerOpen,
-  setBurgerOpen,
-  isOrg,
-  isConnected,
-  setPageDelay,
-}: MobileNavBarProps) {
+export default function MobileNavBar({ setBurgerOpen }: MobileNavBarProps) {
   const toggleMenu = () => {
     setBurgerOpen((prev) => !prev);
   };
+
+  const { signedUser } = useUserChange();
 
   return (
     <div className="fixed top-0 left-0 bg-black text-white w-screen h-screen block open-navBar z-50">
@@ -30,23 +27,23 @@ export default function MobileNavBar({
         <NavLink to="/events" onClick={toggleMenu}>
           Events
         </NavLink>
-        {isOrg && (
+        {signedUser?.isOrganiser && (
           <NavLink to="/event-management" onClick={toggleMenu}>
             Event Management
           </NavLink>
         )}
-        {isConnected && (
+        {signedUser && (
           <NavLink to="/profile" onClick={toggleMenu}>
             Profile
           </NavLink>
         )}
-        {isConnected && <LogoutButton setPageDelay={setPageDelay} />}
-        {!isConnected && (
+        {signedUser && <LogoutButton />}
+        {!signedUser && (
           <NavLink to="/login" onClick={toggleMenu}>
             Login
           </NavLink>
         )}
-        {!isConnected && (
+        {!signedUser && (
           <NavLink to="/signup" onClick={toggleMenu}>
             Signup
           </NavLink>
@@ -57,9 +54,5 @@ export default function MobileNavBar({
 }
 
 interface MobileNavBarProps {
-  burgerOpen: boolean;
   setBurgerOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  isOrg: boolean;
-  isConnected: boolean;
-  setPageDelay: CustomDispatch<boolean>;
 }

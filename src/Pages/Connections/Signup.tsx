@@ -23,7 +23,7 @@ export default function Signup() {
 
   const navigate = useNavigate();
 
-  let signedUser = useUserChange();
+  const { signedUser, userLoading } = useUserChange();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +50,8 @@ export default function Signup() {
     // );
 
     setSuccessMessage(
-      "successfully signed up! check your inbox verify your email"
+      // "successfully signed up! check your inbox verify your email"
+      "successfully signed up!"
     );
 
     const userUID = userCredential.user.uid;
@@ -69,13 +70,16 @@ export default function Signup() {
     // navigate(-1);
     // navigate("/login");
     // location.href = "/login";
+
     if (window.location.href.includes("festindo")) {
       navigate(-1);
     } else {
       navigate("/events");
     }
   };
-  if (signedUser !== null) {
+  if (userLoading) {
+    <div className="lds-dual-ring flex justify-center w-screen mt-[40vh] sm:mt-0 sm:items-center h-screen"></div>;
+  } else if (signedUser !== null) {
     return (
       <div className="text-center mt-8">
         <p>You are already connected</p>
@@ -89,53 +93,53 @@ export default function Signup() {
         </button>
       </div>
     );
+  } else {
+    return (
+      <div>
+        <Heading css="">Signup</Heading>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 items-center mt-8"
+        >
+          <InputField
+            text="Full Name :"
+            type="tex"
+            value={fullName}
+            setValue={setFullName}
+            placeholder="John Doe"
+          />
+          <InputField
+            text="Email :"
+            type="text"
+            value={pass}
+            setValue={setPass}
+            placeholder="johndoe@gmail.com"
+          />
+          <InputField
+            text="Password :"
+            type="password"
+            value={email}
+            setValue={setEmail}
+            placeholder="password"
+          />
+          <InputField
+            text="Confirm Password :"
+            type="password"
+            value={conPass}
+            setValue={setConPass}
+            placeholder="confirm password"
+          />
+          <div className="text-red-500">{errorMessage}</div>
+          <div className="text-green-500">{successMessage}</div>
+          <SubmitButton text="Signup" />
+          <p>
+            Already Have an Account ?{" "}
+            <button className="font-bold" onClick={() => navigate("/login")}>
+              Login
+            </button>
+          </p>
+        </form>
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <Heading css="">Signup</Heading>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 items-center mt-8"
-      >
-        <InputField
-          text="Full Name :"
-          type="tex"
-          value={fullName}
-          setValue={setFullName}
-          placeholder="John Doe"
-        />
-        <InputField
-          text="Email :"
-          type="text"
-          value={pass}
-          setValue={setPass}
-          placeholder="johndoe@gmail.com"
-        />
-        <InputField
-          text="Password :"
-          type="password"
-          value={email}
-          setValue={setEmail}
-          placeholder="password"
-        />
-        <InputField
-          text="Confirm Password :"
-          type="password"
-          value={conPass}
-          setValue={setConPass}
-          placeholder="confirm password"
-        />
-        <div className="text-red-500">{errorMessage}</div>
-        <div className="text-green-500">{successMessage}</div>
-        <SubmitButton text="Signup" />
-        <p>
-          Already Have an Account ?{" "}
-          <button className="font-bold" onClick={() => navigate("/login")}>
-            Login
-          </button>
-        </p>
-      </form>
-    </div>
-  );
 }

@@ -1,15 +1,10 @@
 import React from "react";
 import Logout from "../Utils/Logout";
 
-export default function LogoutButton({
-  setPageDelay,
-}: {
-  setPageDelay: CustomDispatch<boolean>;
-}) {
+export default function LogoutButton() {
   return (
     <button
       onClick={async () => {
-        setPageDelay((prev) => !prev);
         let status = await Logout();
         if (status) {
         } else {

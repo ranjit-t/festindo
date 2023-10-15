@@ -7,7 +7,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import Loading from "../../../GlobalUI/Loading";
 
 export default function ProfileSettings() {
-  const signedUser = useUserChange();
+  const { signedUser, userLoading } = useUserChange();
 
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -30,7 +30,6 @@ export default function ProfileSettings() {
       setProfilePhoto(signedUser.profilePhoto || "");
       setIsOrganizer(signedUser.isOrganiser);
     }
-    console.log(bio);
   }, [signedUser]);
 
   const handleRadioChange = () => {
@@ -129,7 +128,7 @@ export default function ProfileSettings() {
             Bio :
             <div
               contentEditable
-              className="border border-1 border-gray-400 px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw] min-h-[100px]"
+              className="border border-1 border-gray-400 px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw] min-h-[100px] cursor-text"
               onBlur={(e) => {
                 setBio(e.target.innerHTML);
               }}

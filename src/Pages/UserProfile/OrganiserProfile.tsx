@@ -66,21 +66,23 @@ export default function UserProfile() {
         <OrgStatistics organiser={organiser} />
         <OrgFollow organiser={organiser} setFollowChanged={setFollowChanged} />
       </div>
-      <div className="flex items-start  gap-6  p-2 min-w-[250px]">
-        <span className="font-bold pl-2 underline underline-offset-4 ">
-          Bio :
-        </span>
-        <p className="text-gray-700">
-          <span dangerouslySetInnerHTML={{ __html: organiser?.bio }}></span>
-        </p>
-      </div>
-      <div className="flex items-center  gap-6 p-2 min-w-[250px]">
-        <span className="font-bold pl-2 underline underline-offset-4">
-          City :
-        </span>
-        <p className="text-gray-700">
-          <span>{organiser?.city}</span>
-        </p>
+      <div className="flex flex-col items-start">
+        <div className="flex items-start  gap-4  p-2 min-w-[250px]">
+          <span className="font-bold pl-2 underline underline-offset-4 ">
+            Bio:
+          </span>
+          <p className="text-gray-700">
+            <span dangerouslySetInnerHTML={{ __html: organiser?.bio }}></span>
+          </p>
+        </div>
+        <div className="flex items-center  gap-4 p-2 min-w-[250px]">
+          <span className="font-bold pl-2 underline underline-offset-4">
+            City:
+          </span>
+          <p className="text-gray-700">
+            <span>{organiser?.city}</span>
+          </p>
+        </div>
       </div>
     </div>
   );

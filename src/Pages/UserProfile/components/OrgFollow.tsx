@@ -12,7 +12,7 @@ export default function OrgFollow({
   organiser: UserDetailsType | null;
   setFollowChanged: CustomDispatch<boolean>;
 }) {
-  const signedUser = useUserChange();
+  const { signedUser } = useUserChange();
   const navigate = useNavigate();
 
   const [userFollowing, setUserFollowing] = useState(false);

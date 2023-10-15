@@ -3,7 +3,7 @@ import useUserChange from "../../../Firebase/useUserChange";
 import { useNavigate } from "react-router-dom";
 
 export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
-  let signedUser = useUserChange();
+  const { signedUser, userLoading } = useUserChange();
 
   const navigate = useNavigate();
 
@@ -13,6 +13,12 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
 
   const activeMenu = "text-[16px] underline underline-offset-4";
   const inActiveMenu = "text-[14px]";
+
+  if (userLoading) {
+    return (
+      <div className="lds-dual-ring flex justify-center w-screen mt-[40vh] sm:mt-0 sm:items-center h-screen"></div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center sm:items-end mt-8">
