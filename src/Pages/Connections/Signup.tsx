@@ -70,7 +70,7 @@ export default function Signup() {
     // navigate("/login");
     // location.href = "/login";
     if (window.location.href.includes("festindo")) {
-      navigate(-1);
+      navigate(-2);
     } else {
       navigate("/events");
     }
