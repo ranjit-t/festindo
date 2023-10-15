@@ -132,7 +132,6 @@ export default function ProfileSettings() {
               className="border border-1 border-gray-400 px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw] min-h-[100px]"
               onBlur={(e) => {
                 setBio(e.target.innerHTML);
-                console.log(bio);
               }}
               dangerouslySetInnerHTML={{ __html: bio }}
             ></div>

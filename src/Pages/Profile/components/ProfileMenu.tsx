@@ -17,7 +17,7 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
   return (
     <div className="flex flex-col items-center sm:items-end mt-8">
       <p className="font-bold text-lg">Hello {signedUser?.fullName} ! </p>
-      <div className="flex flex-col-reverse items-center sm:flex-row-reverse  w-full sm:justify-between">
+      <div className="flex flex-col-reverse items-center sm:flex-row-reverse  w-full sm:justify-between ">
         {signedUser?.isOrganiser ? (
           <div className="flex flex-col items-end  my-4 text-gray-600">
             <p>You are an organiser,</p>
@@ -43,7 +43,7 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
             <img
               src={signedUser?.profilePhoto}
               alt="Photo"
-              className="w-[100px] h-[100px] object-cover rounded-full sm:mr-8  border border-1 border-black shadow-lg"
+              className="w-[100px] h-[100px] object-cover rounded-full   border border-1 border-black shadow-lg mt-6 sm:mt-0"
             />
           )}
         </div>

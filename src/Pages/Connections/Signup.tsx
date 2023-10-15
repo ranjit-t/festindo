@@ -22,6 +22,7 @@ export default function Signup() {
   const [fullName, setFullName] = useState("");
 
   const navigate = useNavigate();
+
   let signedUser = useUserChange();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -54,12 +55,14 @@ export default function Signup() {
 
     const userUID = userCredential.user.uid;
     const userData = {
-      userID: userUID,
+      uid: userUID,
       fullName,
       email,
       password: pass,
-      organized: [],
+      eventsHosted: [],
       isOrganiser: false,
+      followers: [],
+      following: [],
     };
     const userDocRef = doc(collection(db, "users"), userUID);
     await setDoc(userDocRef, userData);
@@ -75,11 +78,13 @@ export default function Signup() {
 
   if (signedUser !== null) {
     // navigate("/events");
-    return (
-      <div className="text-center mt-16">
-        You have already signed up and logged in !
-      </div>
-    );
+    if (window.location.href.includes("festindo")) {
+      navigate(-1);
+    } else {
+      navigate("/events");
+    }
+
+    return null;
   }
 
   return (

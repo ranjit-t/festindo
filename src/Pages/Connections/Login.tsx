@@ -25,15 +25,24 @@ export default function Login({
       await signInWithEmailAndPassword(auth, email, pass);
 
       setPageDelay((prev) => !prev);
-      navigate(-1);
+      if (window.location.href.includes("festindo")) {
+        navigate(-1);
+      } else {
+        navigate("/events");
+      }
+      return null;
     } catch (error) {
       setErrorMessage("Oups, il y a une erreur");
     }
   };
 
   if (signedUser !== null) {
-    // navigate("/events");
-    return <div className="text-center mt-16">You are already logged in !</div>;
+    if (window.location.href.includes("festindo")) {
+      navigate(-1);
+    } else {
+      navigate("/events");
+    }
+    return null;
   }
 
   return (

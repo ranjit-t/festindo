@@ -6,7 +6,7 @@ export let events: EventsType[] = [
     description:
       "Join us for a weekend of live music and entertainment! Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quaerat reiciendis odit rerum pariatur officia ipsa? Incidunt fuga nisi modi, suscipit non repellendus perspiciatis, excepturi a officiis officia esse sapiente!",
     organizerName: "EventMasters",
-    organizerId: "HlPJT6Pe6mafy1OfiooU3FFRZYt1",
+    organizerId: "2hovscMa7AX7gK9eqbduCocZV9p2",
     address: "123 Main Street, Cityville, USA",
     ticketPrice: 50.0,
     photos: [
@@ -22,7 +22,7 @@ export let events: EventsType[] = [
     title: "Art Exhibition",
     description: "Explore a collection of contemporary art.",
     organizerName: "ArtGallery Co.",
-    organizerId: "HlPJT6Pe6mafy1OfiooU3FFRZYt1",
+    organizerId: "2hovscMa7AX7gK9eqbduCocZV9p2",
     address: "456 Art Avenue, Artville, USA",
     ticketPrice: 10.0,
     photos: [
@@ -89,7 +89,7 @@ export let events: EventsType[] = [
     title: "Paris Fashion Week",
     description: "Get a front-row seat to the latest fashion trends.",
     organizerName: "Fashion Forward",
-    organizerId: "HlPJT6Pe6mafy1OfiooU3FFRZYt1",
+    organizerId: "2hovscMa7AX7gK9eqbduCocZV9p2",
     address: "456 Fashion Street, Paris, France",
     ticketPrice: 50.0,
     country: "France",
@@ -100,7 +100,7 @@ export let events: EventsType[] = [
     title: "French Cuisine Masterclass",
     description: "Learn to cook delicious French dishes from top chefs.",
     organizerName: "Culinary Delights",
-    organizerId: "HlPJT6Pe6mafy1OfiooU3FFRZYt1",
+    organizerId: "2hovscMa7AX7gK9eqbduCocZV9p2",
     address: "789 Culinary Avenue, Lyon, France",
     ticketPrice: 35.0,
     country: "France",
@@ -111,7 +111,7 @@ export let events: EventsType[] = [
     title: "Marseille Music Festival",
     description: "Join us for a musical extravaganza in Marseille.",
     organizerName: "Music Mania",
-    organizerId: "HlPJT6Pe6mafy1OfiooU3FFRZYt1",
+    organizerId: "2hovscMa7AX7gK9eqbduCocZV9p2",
     address: "101 Music Lane, Marseille, France",
     ticketPrice: 25.0,
     country: "France",
@@ -135,7 +135,7 @@ export let events: EventsType[] = [
     description:
       "Explore a collection of contemporary art in the City of Angels.",
     organizerName: "ArtGallery LA",
-    organizerId: "65432",
+    organizerId: "JWx9ItcXlhTnUCu1XLKPrdbhZe73",
     address: "789 Art Avenue, Los Angeles, USA",
     ticketPrice: 15.0,
     country: "USA",
