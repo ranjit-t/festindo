@@ -16,8 +16,8 @@ export default function TriggerSearch({
           {/* <p className="text-gray-400 mr-6">Search</p> */}
           <input
             type="text"
-            placeholder="City"
-            className="w-28 outline-none"
+            placeholder="Search by City"
+            className="w-32 outline-none"
             onChange={(e) => {
               setByCity(e.target.value);
             }}

@@ -75,16 +75,20 @@ export default function Signup() {
       navigate("/events");
     }
   };
-
   if (signedUser !== null) {
-    // navigate("/events");
-    if (window.location.href.includes("festindo")) {
-      navigate(-1);
-    } else {
-      navigate("/events");
-    }
-
-    return null;
+    return (
+      <div className="text-center mt-8">
+        <p>You are already connected</p>
+        <button
+          className="font-bold mt-2"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Go to events and Explore the events in your city!
+        </button>
+      </div>
+    );
   }
 
   return (
