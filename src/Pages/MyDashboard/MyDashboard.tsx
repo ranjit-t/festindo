@@ -43,7 +43,7 @@ export default function MyDashboard() {
             <hr />
           </div>
           <div className="flex flex-col items-end mt-4">
-            <button className="text-lg font-bold p-2 border rounded-lg shadow-md flex gap-2">
+            <button className="text-lg font-bold p-2 border rounded-lg shadow-md active:shadow-lg active:p- flex gap-2">
               <img src={plus} alt="" className="w-6 rounded-full" />{" "}
               <span>Create a new event</span>
             </button>
@@ -52,7 +52,7 @@ export default function MyDashboard() {
         <img
           src={signedUser?.profilePhoto}
           alt=""
-          className="w-16 h-16 rounded-full"
+          className="w-16 h-16 rounded-full object-cover"
         />
       </div>
 
@@ -63,7 +63,7 @@ export default function MyDashboard() {
         <MyEventList />
       </div>
       <hr />
-      <div className="flex flex-col items-start my-4 text-gray-600">
+      <div className="flex flex-col items-start my-4 text-gray-500">
         <Heading css="text-xl font-bold underline underline-offset-4 mt-6 ml-2 text-black">
           Past Events
         </Heading>

@@ -13,7 +13,7 @@ export default function MyEventList() {
     <>
       {myEvents.length === 0 && (
         <div className=" mt-4 mx-auto">
-          Sorry, You haven't organised any event sorry!
+          You haven't organised any events yet!
         </div>
       )}
       <div className="flex w-full mt-4 overflow-scroll myevents">
