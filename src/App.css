@@ -147,3 +147,17 @@
 .white-space {
   white-space: pre;
 }
+
+.myevents {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.myevents::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+.myevents > div {
+  box-shadow: 1px 5px 5px rgba(7, 7, 7, 0.4);
+}

@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function Heading(props: HeadingProps) {
-  const baseStyles: string = "text-2xl  text-center";
-  return <div className={`${baseStyles} ${props.css}`}>{props.children}</div>;
+  const baseStyles: string = "text-2xl text-center";
+  return <div className={`${props.css} ${baseStyles} `}>{props.children}</div>;
 }
 
 type HeadingProps = {

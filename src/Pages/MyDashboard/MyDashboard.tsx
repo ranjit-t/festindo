@@ -2,6 +2,8 @@ import React from "react";
 import Heading from "../../GlobalUI/Heading";
 import useUserChange from "../../Firebase/useUserChange";
 import { useNavigate } from "react-router-dom";
+import { events } from "../../Data/eventsData";
+import MyEventList from "./components/MyEventList";
 
 export default function MyDashboard() {
   const { signedUser, userLoading } = useUserChange();
@@ -31,8 +33,24 @@ export default function MyDashboard() {
   }
 
   return (
-    <div>
-      <Heading css="">Event Management</Heading>
+    <div className="w-[90%] lg:w-[70%] mx-auto">
+      <div className="flex  justify-end items-center gap-4 mt-8 lg:mt-0">
+        <div>
+          <p className="font-bold">Hello {signedUser?.fullName}!</p>
+          <p className="text-gray-600 my-2">How are you doing today ?</p>
+          <hr />
+        </div>
+        <img
+          src={signedUser?.profilePhoto}
+          alt=""
+          className="w-16 h-16 rounded-full"
+        />
+      </div>
+      <div className="flex flex-col items-start mb-4">
+        <Heading css="text-xl mt-6 ml-2">My Events</Heading>
+        <MyEventList />
+      </div>
+      <hr />
     </div>
   );
 }
