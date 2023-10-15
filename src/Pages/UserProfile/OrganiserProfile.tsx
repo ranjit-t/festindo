@@ -7,7 +7,7 @@ import { doc, getDoc } from "firebase/firestore";
 import OrgStatistics from "./components/OrgStatistics";
 import OrgFollow from "./components/OrgFollow";
 
-export default function OrganiserProfile() {
+export default function UserProfile() {
   const { uid } = useParams();
   ScrollToTop();
 

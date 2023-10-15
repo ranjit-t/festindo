@@ -4,13 +4,26 @@ import { useNavigate, useParams } from "react-router-dom";
 import Heading from "../../GlobalUI/Heading";
 import EventPara from "../../GlobalUI/EventPara";
 import ScrollToTop from "../../Hooks/ScrollToTop";
+import useUserChange from "../../Firebase/useUserChange";
 
 export default function SingleEvent() {
   const { pageId } = useParams();
   const event = events.find((event) => event.id === parseInt(pageId || "0"));
   const navigate = useNavigate();
+  const signedUser = useUserChange();
 
   ScrollToTop();
+
+  if (signedUser === null) {
+    return (
+      <div className="text-center text-lg mt-16">
+        <p>Please, Login to access this event</p>
+        <button className="font-bold mt-2" onClick={() => navigate("/login")}>
+          Click Here to Login
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center gap-6 w-[90vw] sm:w-[75vw] md:w-[60vw] mx-auto">
@@ -45,7 +58,7 @@ export default function SingleEvent() {
             <strong className="font-bold text-lg">Organizer : </strong>
             <div
               className="flex items-center gap-2 ml-2 border border-1 p-2 cursor-pointer rounded-lg shadow-md specialFont"
-              onClick={() => navigate(`/organizer/${event?.organizerId}`)}
+              onClick={() => navigate(`/user/${event?.organizerId}`)}
             >
               <img
                 src="https://static.vecteezy.com/system/resources/thumbnails/009/972/776/small/people-icon-sign-symbol-design-free-png.png" //to be changed
