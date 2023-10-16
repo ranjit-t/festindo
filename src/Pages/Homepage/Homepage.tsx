@@ -1,25 +1,17 @@
 import React from "react";
 import Heading from "../../GlobalUI/Heading";
 import tickets from "../../Images/banner.avif";
-import france from "../../Images/paris.jpeg";
-import uk from "../../Images/uk.avif";
-import usa from "../../Images/usa.avif";
-import eventStore from "../../Store/eventStore";
-import { useNavigate } from "react-router-dom";
+
+// import eventStore from "../../Store/eventStore";
+// import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../../Hooks/ScrollToTop";
+import CountriesList from "./components/CountriesList";
 
 export default function Homepage() {
-  const { changeCountry } = eventStore();
-
-  const navigate = useNavigate();
+  // const { changeCountry } = eventStore();
+  // const navigate = useNavigate();
 
   ScrollToTop();
-
-  const handleCountry = (country: string) => {
-    changeCountry(country);
-    navigate("/events");
-    // location.href = "/events";
-  };
 
   return (
     <div className="flex flex-col items-center">
@@ -28,51 +20,65 @@ export default function Homepage() {
         alt="Banner"
         className="max-h-[550px] w-screen object-cover "
       />
+
+      {/* Here */}
+      <div>
+        <div className="flex justify-start w-[80vw] sm:w-[70vw]">
+          <Heading css="underline underline-offset-[6px] mt-8">
+            What is FESTINDO ?
+          </Heading>
+        </div>
+        <div className="flex flex-col justify-start w-[80vw] sm:w-[70vw] mt-6 text-lg text-justify">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            consectetur neque modi nemo facilis amet odio vero suscipit
+            doloremque repellendus eaque, dolor minus exercitationem quaerat
+            expedita totam error nobis veniam! Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Cumque consectetur neque modi nemo
+            facilis amet odio vero suscipit doloremque repellendus eaque, dolor
+            minus exercitationem quaerat expedita totam error nobis veniam!
+          </p>
+        </div>
+
+        {/* Here */}
+        <div className="flex flex-col sm:flex-row gap-8 justify-start w-[80vw] sm:w-[70vw] mt-6 text-lg text-justify">
+          <div className="flex flex-col items-start  gap-4">
+            <div className="">
+              <Heading css="underline underline-offset-[6px] mt-2 text-lg font-bold">
+                Is It Really Free ?
+              </Heading>
+            </div>
+            <div className="">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+                consectetur neque modi nemo facilis amet odio vero suscipit
+                doloremque repellendus eaque, dolor minus exercitationem quaerat
+                expedita totam error nobis veniam!
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col items-start  gap-4">
+            <div className="">
+              <Heading css="underline underline-offset-[6px] mt-2 text-lg font-bold">
+                Donate to keep us working !
+              </Heading>
+            </div>
+            <div className="">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+                consectetur neque modi nemo facilis amet odio vero suscipit
+                doloremque repellendus eaque, dolor minus exercitationem quaerat
+                expedita totam error nobis veniam!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="flex justify-start w-[80vw] sm:w-[70vw]">
         <Heading css="underline underline-offset-[6px] mt-8">Countries</Heading>
       </div>
-      <div className="mt-4 flex gap-8 overflow-x-scroll px-[5vw] sm:px-[10vw] max-w-[100vw]  sm:max-w-[90vw] countries-container ">
-        <div
-          className="flex flex-col items-center  font-bold text-lg border border-1 border-black rounded-lg p-2 cursor-pointer min-w-[300px] overflow-hidden"
-          onClick={() => {
-            handleCountry("France");
-          }}
-        >
-          <img
-            src={france}
-            alt="France"
-            className="w-[300px] h-[200px] object-cover transition-transform hover:scale-110"
-            width="300px"
-          />
-          <p className="mt-3">France</p>
-        </div>
-        <div
-          className="flex flex-col items-center  font-bold text-lg border border-1 border-black rounded-lg p-2 cursor-pointer min-w-[300px] overflow-hidden"
-          onClick={() => {
-            handleCountry("UK");
-          }}
-        >
-          <img
-            src={uk}
-            alt="UK"
-            className="w-[300px] h-[200px] object-cover transition-transform hover:scale-110"
-          />
-          <p className="mt-3">UK</p>
-        </div>
-        <div
-          className="flex flex-col items-center  font-bold text-lg border border-1 border-black rounded-lg p-2 cursor-pointer min-w-[300px] overflow-hidden"
-          onClick={() => {
-            handleCountry("USA");
-          }}
-        >
-          <img
-            src={usa}
-            alt="USA"
-            className="w-[300px] h-[200px] object-cover transition-transform hover:scale-110"
-          />
-          <p className="mt-3">USA</p>
-        </div>
-      </div>
+      <CountriesList />
     </div>
   );
 }
