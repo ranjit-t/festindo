@@ -106,6 +106,7 @@ export default function ProfileSettings() {
           placeholder="full name"
           value={fullName}
           setValue={setFullName}
+          css="max-w-[90vw] sm:max-w-[470px]"
         />
         <InputField
           text="Email :"
@@ -113,7 +114,7 @@ export default function ProfileSettings() {
           placeholder="email"
           value={email}
           setValue={setEmail}
-          css="text-gray-500"
+          css="text-gray-500 max-w-[90vw] sm:max-w-[470px]"
           disabled
         />
         {/* <InputField
@@ -128,7 +129,7 @@ export default function ProfileSettings() {
             Bio :
             <div
               contentEditable
-              className="border border-1 border-gray-400 px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw] min-h-[100px] cursor-text"
+              className="border border-1 border-gray-400 px-4 py-2 outline-none rounded-lg block max-w-[90vw] sm:max-w-[470px] w-[90vw] min-h-[100px] cursor-text"
               onBlur={(e) => {
                 setBio(e.target.innerHTML);
               }}
@@ -142,6 +143,7 @@ export default function ProfileSettings() {
           placeholder="city"
           value={city}
           setValue={setCity}
+          css="text-gray-500 max-w-[90vw] sm:max-w-[470px]"
         />
         {profilePhoto && (
           <img
@@ -155,7 +157,7 @@ export default function ProfileSettings() {
           Profile Photo :
           <input
             type="file"
-            className="border border-1 border-gray-400  px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw]"
+            className="border border-1 border-gray-400  px-4 py-2 outline-none rounded-lg block max-w-[90vw] sm:max-w-[470px] w-[90vw]"
             onChange={handleImageUpload}
             required={signedUser?.profilePhoto ? false : true}
           />
@@ -191,7 +193,7 @@ export default function ProfileSettings() {
         </div>
         <button
           type="submit"
-          className="hover:bg-gray-900 bg-black rounded-lg  text-white p-2 mt-4"
+          className="bg-black rounded-lg  hover:shadow-lg text-white p-2 mt-4"
         >
           Update Profile
         </button>
