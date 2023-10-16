@@ -10,7 +10,11 @@ import MyFavorites from "./components/MyFavorites";
 export default function Profile() {
   const { signedUser, userLoading } = useUserChange();
 
-  const [menuNum, setMenuNum] = useState(3);
+  const localMenuNum = localStorage.getItem("localMenuNum");
+
+  const [menuNum, setMenuNum] = useState(
+    localMenuNum ? JSON.parse(localMenuNum) : 3
+  );
 
   const navigate = useNavigate();
 

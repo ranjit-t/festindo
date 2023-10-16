@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { events } from "../../Data/eventsData";
 import { useNavigate, useParams } from "react-router-dom";
 import Heading from "../../GlobalUI/Heading";
 import EventPara from "../../GlobalUI/EventPara";
 import ScrollToTop from "../../Hooks/ScrollToTop";
 import useUserChange from "../../Firebase/useUserChange";
+import { formatDateWithMonthName } from "../../Utils/formatDatewithMonthName";
+import emptyHeart from "../../Images/emptyHeart.svg";
+import fullHeart from "../../Images/fullHeart.svg";
+
+import useHandleFav from "../../Hooks/useHandleFav";
 
 export default function SingleEvent() {
   const { pageId } = useParams();
@@ -12,6 +17,19 @@ export default function SingleEvent() {
   const navigate = useNavigate();
 
   const { signedUser, userLoading } = useUserChange();
+
+  const [isFavorite, setIsFavorite] = useState<boolean>(true);
+
+  const { handleFav } = useHandleFav({
+    setIsFavorite,
+  });
+
+  useEffect(() => {
+    if (pageId) {
+      let result = signedUser?.favorites.includes(pageId);
+      setIsFavorite(result ? result : false);
+    }
+  }, [signedUser, pageId]);
 
   ScrollToTop();
 
@@ -30,7 +48,7 @@ export default function SingleEvent() {
     return (
       <div className="flex flex-col items-center gap-6 w-[90vw] sm:w-[75vw] md:w-[60vw] mx-auto">
         <img src={event?.photos?.[0]} alt="" className="max-h-[50vh]" />
-        <Heading css="">{event?.title}</Heading>
+        <Heading css="w-screen">{event?.title}</Heading>
 
         <EventPara
           head={"Description"}
@@ -56,6 +74,7 @@ export default function SingleEvent() {
               head={"Category"}
               content={event?.category || "(Not Mentioned)"}
             />
+
             <div className="flex items-center  my-4">
               <strong className="font-bold text-lg">Organizer : </strong>
               <div
@@ -71,10 +90,42 @@ export default function SingleEvent() {
               </div>
             </div>
             <EventPara
+              head={"Date"}
+              content={formatDateWithMonthName(event?.date || "")}
+              css=" text-justify"
+            />
+            <EventPara
+              head={"Timings"}
+              content={`${event?.startTime} - ${event?.endTime}`}
+              css=" text-justify"
+            />
+            <EventPara
               head={"Price"}
               content={event?.ticketPrice}
               css="text-lg"
             />
+
+            {isFavorite ? (
+              <div
+                className="w-8 cursor-pointer flex justify-center items-center gap-2 w-full border p-2 mt-2 shadow-md rounded-lg active:shadow-lg"
+                onClick={() => {
+                  pageId && handleFav(pageId, "remove"); // Use "remove" as the action
+                }}
+              >
+                <p>Remove from Favorites</p>{" "}
+                <img src={fullHeart} alt="" className="w-8" />
+              </div>
+            ) : (
+              <div
+                className="w-8 cursor-pointer flex justify-center items-center gap-2 w-full border p-2 mt-2 shadow-md rounded-lg active:shadow-lg"
+                onClick={() => {
+                  pageId && handleFav(pageId, "add");
+                }}
+              >
+                <p>Add to Favorites</p>{" "}
+                <img src={emptyHeart} alt="" className="w-8" />
+              </div>
+            )}
           </div>
         </div>
       </div>

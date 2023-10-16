@@ -9,17 +9,23 @@ import EventItem from "./EventItem";
 export default function EventsList({ expanded, setExpanded }: EventsListProps) {
   const { country } = eventStore();
   const selectedCountry = country;
-  const [filteredEvents, setfilteredEvents] = useState(events);
+
+  const currentDate = new Date().toISOString().split("T")[0]; // Get today's date in "yyyy-MM-dd" format
+  const upcomingEvents = events.filter(
+    (event) => event.date && event.date >= currentDate
+  );
+
+  const [filteredEvents, setfilteredEvents] = useState(upcomingEvents);
 
   const [byCity, setByCity] = useState("");
 
   useEffect(() => {
-    let filter = events
+    let filter = upcomingEvents
       .filter((event) => event.country === selectedCountry)
-      .filter((event: EventsType) =>
+      .filter((event) =>
         event.city.toLowerCase().includes(byCity.toLowerCase())
       );
-    setfilteredEvents(country === "" ? events : filter);
+    setfilteredEvents(country === "" ? upcomingEvents : filter);
   }, [country, byCity]);
 
   return (

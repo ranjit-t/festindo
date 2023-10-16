@@ -10,6 +10,9 @@ type EventsType = {
   country: string;
   city: string;
   category?: string;
+  date: string;
+  startTime: string;
+  endTime: string;
 };
 
 export default EventsType;

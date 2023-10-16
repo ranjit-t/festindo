@@ -10,6 +10,14 @@ export default function MyDashboard() {
   const { signedUser, userLoading } = useUserChange();
   const navigate = useNavigate();
 
+  const currentDate = new Date().toISOString().split("T")[0]; // Get today's date in "yyyy-MM-dd" format
+  const upcomingEvents = events.filter(
+    (event) => event.date && event.date >= currentDate
+  );
+  const pastEvents = events.filter(
+    (event) => event.date && event.date < currentDate
+  );
+
   if (userLoading) {
     <div className="lds-dual-ring flex justify-center w-screen mt-[40vh] sm:mt-0 sm:items-center h-screen"></div>;
   } else if (signedUser === null) {
@@ -60,14 +68,22 @@ export default function MyDashboard() {
         <Heading css="text-xl font-bold underline underline-offset-4 mt-6 ml-2">
           Upcoming Events
         </Heading>
-        <MyEventList />
+        <MyEventList
+          events={upcomingEvents}
+          emptyText=" You haven't organised any events yet!"
+          orgView={true}
+        />
       </div>
       <hr />
       <div className="flex flex-col items-start my-4 text-gray-500">
         <Heading css="text-xl font-bold underline underline-offset-4 mt-6 ml-2 text-black">
           Past Events
         </Heading>
-        <MyEventList />
+        <MyEventList
+          events={pastEvents}
+          emptyText=" You don't have any past events yet!"
+          orgView={true}
+        />
       </div>
       <hr />
     </div>

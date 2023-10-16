@@ -59,17 +59,18 @@ export default function Signup() {
       uid: userUID,
       fullName,
       email,
+      bio: "",
+      profilePhoto: "",
+      city: "",
       password: pass,
       eventsHosted: [],
       isOrganiser: false,
       followers: [],
       following: [],
+      favorites: [],
     };
     const userDocRef = doc(collection(db, "users"), userUID);
     await setDoc(userDocRef, userData);
-    // navigate(-1);
-    // navigate("/login");
-    // location.href = "/login";
 
     if (window.location.href.includes("festindo")) {
       navigate(-1);

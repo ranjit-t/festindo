@@ -9,6 +9,7 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
 
   const handleMenuClick = (num: number) => {
     setMenuNum(num);
+    localStorage.setItem("localMenuNum", JSON.stringify(num));
   };
 
   const activeMenu = "text-[16px] underline underline-offset-4";
@@ -38,9 +39,16 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
             <p>to host your next event.</p>
           </div>
         ) : (
-          <div className="flex flex-col items-end gap-2 my-4">
+          <div className="flex flex-col items-end gap-2 my-4 text-gray-600">
             <p>Want to organise events ? </p>{" "}
-            <button className="font-[900]">Go to Profile Settings and</button>
+            <button
+              className="font-[900] text-black"
+              onClick={() => {
+                handleMenuClick(3);
+              }}
+            >
+              Go to Profile Settings and
+            </button>
             <p>change your account type.</p>
           </div>
         )}
@@ -54,7 +62,7 @@ export default function ProfileMenu({ menuNum, setMenuNum }: ProfileMenuProps) {
           )}
         </div>
       </div>
-      <div className="bg-black text-white flex justify-evenly  gap-4 sm:w-[470px] p-4 my-4">
+      <div className="bg-black text-white flex justify-evenly  gap-4 w-[90vw] sm:w-[470px] p-4 my-4">
         <button
           onClick={() => handleMenuClick(1)}
           className={menuNum === 1 ? activeMenu : inActiveMenu}

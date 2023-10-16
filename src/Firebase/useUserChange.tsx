@@ -17,6 +17,8 @@ function useUserChange() {
         if (userDocSnapshot.exists()) {
           const userInfo = userDocSnapshot.data();
 
+          // console.log(userInfo.favorites);
+
           if (userInfo) {
             setSignedUser({
               email: user.email ? user.email : "",
@@ -27,6 +29,10 @@ function useUserChange() {
               profilePhoto: userInfo.profilePhoto,
               city: userInfo.city,
               emailVerified: user.emailVerified,
+              followers: userInfo.followers,
+              following: userInfo.following,
+              eventsHosted: userInfo.eventsHosted,
+              favorites: userInfo.favorites,
             });
             setUserLoading(false);
           }
@@ -52,4 +58,8 @@ type UserDetailsType = {
   bio?: string;
   city?: string;
   profilePhoto?: string;
+  followers: string[];
+  following: string[];
+  eventsHosted: string[];
+  favorites: string[];
 };

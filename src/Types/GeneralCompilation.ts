@@ -4,11 +4,12 @@ type UserDetailsType = {
   email: string;
   fullName: string;
   uid: string;
-  isOrganiser?: boolean;
+  isOrganiser: boolean;
   bio?: string;
   city?: string;
   profilePhoto?: string;
   followers: string[];
   following: string[];
   eventsHosted: string[];
+  favorites: string[];
 };
