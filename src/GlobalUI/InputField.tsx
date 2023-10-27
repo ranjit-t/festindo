@@ -18,7 +18,7 @@ export default function InputField({
           type={type}
           className={`border border-1 border-gray-400 my-2 px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw] ${css}`}
           onChange={(e) => {
-            setValue(e.target.value);
+            setValue && setValue(e.target.value);
           }}
           value={value}
           required={required ? required : true}
@@ -34,7 +34,7 @@ type InputFieldProps = {
   text: string;
   type: string;
   value: any;
-  setValue: React.Dispatch<any>;
+  setValue?: React.Dispatch<any>;
   required?: boolean;
   placeholder: string;
   disabled?: boolean;

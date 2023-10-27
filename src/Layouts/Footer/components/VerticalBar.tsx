@@ -6,7 +6,7 @@ export default function VerticalBar({ header, textTags }: VerticalBarProps) {
       <h2 className="text-lg font-bold mb-2">{header}</h2>
       {textTags.map((tag, idx) => {
         return (
-          <a href={tag.value} key={idx} className="text-sm">
+          <a href={tag.value} key={idx} className="text-sm" target="_blank">
             {tag.label}
           </a>
         );

@@ -13,6 +13,7 @@ import Notfound from "./Pages/NotFound/NotFound";
 import MyDashboard from "./Pages/MyDashboard/MyDashboard";
 import UserProfile from "./Pages/UserProfile/OrganiserProfile";
 import useUserChange from "./Firebase/useUserChange";
+import CreateEvent from "./Pages/CreateEvent/CreateEvent";
 
 function App() {
   const { userLoading } = useUserChange();
@@ -40,6 +41,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/event-management" element={<MyDashboard />} />
+            <Route path="/event-management/create" element={<CreateEvent />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/*" element={<Notfound />} />
           </Routes>

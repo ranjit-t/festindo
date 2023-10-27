@@ -7,7 +7,7 @@ export default function Footer() {
     { label: "Contact Us", value: "/contact" },
     // { label: "Newsletter", value: "/newsletter" },
     { label: "Facebook", value: "/newsletter" },
-    { label: "Instagram", value: "/newsletter" },
+    { label: "Instagram", value: "https://www.instagram.com/fest.indo/" },
   ];
   let col2 = [
     { label: "Help Center", value: "/help" },
@@ -27,7 +27,7 @@ export default function Footer() {
         <VerticalBar header="Discover" textTags={col3} />
       </div>
       <hr className="bg-white w-[70vw] my-8" />
-      <p className="text-center">© All Rights Reserved To Festindo</p>
+      <p className="text-center">© Festindo 2023 - All Rights Reserved</p>
       <img src={logo1} alt="FESTINDO" className="w-20 mt-4" />
     </div>
   );

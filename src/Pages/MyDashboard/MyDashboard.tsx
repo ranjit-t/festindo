@@ -4,7 +4,7 @@ import useUserChange from "../../Firebase/useUserChange";
 import { useNavigate } from "react-router-dom";
 import { events } from "../../Data/eventsData";
 import MyEventList from "./components/MyEventList";
-import plus from "../../Images/plus.svg";
+import DashboardUserDisplay from "./components/DashboardUserDisplay";
 
 export default function MyDashboard() {
   const { signedUser, userLoading } = useUserChange();
@@ -43,27 +43,7 @@ export default function MyDashboard() {
 
   return (
     <div className="w-[90%] lg:w-[70%] mx-auto">
-      <div className="flex  justify-end items-start gap-4 mt-8 lg:mt-0">
-        <div>
-          <div>
-            <p className="font-bold">Hello {signedUser?.fullName}!</p>
-            <p className="text-gray-600 my-2">How are you doing today ?</p>
-            <hr />
-          </div>
-          <div className="flex flex-col items-end mt-4">
-            <button className="text-lg font-bold p-2 border rounded-lg shadow-md active:shadow-lg active:p- flex gap-2">
-              <img src={plus} alt="" className="w-6 rounded-full" />{" "}
-              <span>Create a new event</span>
-            </button>
-          </div>
-        </div>
-        <img
-          src={signedUser?.profilePhoto}
-          alt=""
-          className="w-16 h-16 rounded-full object-cover"
-        />
-      </div>
-
+      <DashboardUserDisplay />
       <div className="flex flex-col items-start my-4">
         <Heading css="text-xl font-bold underline underline-offset-4 mt-6 ml-2">
           Upcoming Events
