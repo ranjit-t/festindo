@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useUserChange from "../../Firebase/useUserChange";
 import { useNavigate } from "react-router-dom";
 import DashboardUserDisplay from "../MyDashboard/components/DashboardUserDisplay";
 import Heading from "../../GlobalUI/Heading";
 import InputField from "../../GlobalUI/InputField";
+import CropPhoto from "./CropPhoto";
 
 export default function CreateEvent() {
   const { signedUser, userLoading } = useUserChange();
@@ -15,23 +16,15 @@ export default function CreateEvent() {
   const [eCat, setECat] = useState("");
   const [eDate, setEDate] = useState("");
   const [ePrice, setEPrice] = useState("");
-  const [eTiming, setSetTimings] = useState("");
 
   const [eStartTime, setEStartTime] = useState("");
   const [eEndTime, setEEndTime] = useState("");
 
-  const [newPhoto, setNewPhoto] = useState<File | null>(null);
-  const [ePhoto, setEPhoto] = useState<string>("");
+  const [croppedPhoto, setCroppedPhoto] = useState<File | null>(null);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      setNewPhoto(files[0]);
-
-      const url = URL.createObjectURL(files[0]);
-      setEPhoto(url);
-    }
-  };
+  useEffect(() => {
+    console.log(croppedPhoto);
+  }, [croppedPhoto]);
 
   if (userLoading) {
     return (
@@ -59,12 +52,12 @@ export default function CreateEvent() {
         <div>
           <div className="flex justify-center relative w-[90vw] max-w-[500px] mx-auto my-12">
             <Heading
-              css="absolute left-0 text-3xl cursor-pointer"
+              css="absolute left-0 text-3xl cursor-pointer flex items-center"
               onClick={() => {
                 navigate("/event-management");
               }}
             >
-              ←
+              ←<span className="text-sm"> Back</span>
             </Heading>
             <Heading css="">Create a new event</Heading>
           </div>
@@ -142,23 +135,22 @@ export default function CreateEvent() {
                 />
               </div>
             </div>
-            <div className="flex items-center">
-              <label>
-                Event Photo :
-                <input
-                  type="file"
-                  className="border border-1 border-gray-400  px-4 py-2 outline-none rounded-lg block w-[90vw] max-w-[500px]"
-                  onChange={handleImageUpload}
-                  required={true}
-                />
-              </label>
-            </div>
-            {ePhoto && (
+
+            <CropPhoto setCroppedPhoto={setCroppedPhoto} />
+            {croppedPhoto && (
               <img
-                src={ePhoto}
-                alt="Profile"
+                src={URL.createObjectURL(croppedPhoto)}
+                alt="Event Photo"
                 className=" h-[200px] object-cover"
               />
+            )}
+            {croppedPhoto && (
+              <button
+                type="submit"
+                className="bg-black rounded-lg  hover:shadow-lg text-white p-2 "
+              >
+                Submit
+              </button>
             )}
           </form>
         </div>
