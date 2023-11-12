@@ -9,11 +9,12 @@ export default function InputField({
   placeholder,
   disabled,
   css,
+  labelInfo,
 }: InputFieldProps) {
   return (
     <div>
       <label>
-        {text}
+        {text} <span className="text-sm text-gray-500">{labelInfo}</span>
         <input
           type={type}
           className={`border border-1 border-gray-400 my-2 px-4 py-2 outline-none rounded-lg block max-w-[300px] w-[90vw] ${css}`}
@@ -39,4 +40,5 @@ type InputFieldProps = {
   placeholder: string;
   disabled?: boolean;
   css?: string;
+  labelInfo?: string;
 };

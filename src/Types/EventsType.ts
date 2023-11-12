@@ -5,7 +5,7 @@ type EventsType = {
   organizerName: string;
   organizerId: number | string;
   address: string;
-  ticketPrice: number;
+  ticketPrice: number | string;
   photos?: string[];
   country: string;
   city: string;

@@ -46,7 +46,7 @@ export default function EventItem({ event }: { event: EventsType }) {
       )}
 
       <div className="p-2 flex flex-col items-start gap-2">
-        <SecHeading css="mt-4">{event.title}</SecHeading>
+        <SecHeading css="mt-4 truncate w-[98%]">{event.title}</SecHeading>
         <p className="truncate max-w-[90%] text-gray-600">
           {event.description}
         </p>

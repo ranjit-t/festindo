@@ -5,6 +5,8 @@ import DashboardUserDisplay from "../MyDashboard/components/DashboardUserDisplay
 import Heading from "../../GlobalUI/Heading";
 import InputField from "../../GlobalUI/InputField";
 import CropPhoto from "./CropPhoto";
+import { isDateAfterToday, timeCheck } from "../../Utils/timeCheck";
+import EventsType from "../../Types/EventsType";
 
 export default function CreateEvent() {
   const { signedUser, userLoading } = useUserChange();
@@ -16,15 +18,45 @@ export default function CreateEvent() {
   const [eCat, setECat] = useState("");
   const [eDate, setEDate] = useState("");
   const [ePrice, setEPrice] = useState("");
-
   const [eStartTime, setEStartTime] = useState("");
   const [eEndTime, setEEndTime] = useState("");
+
+  const defCat = ["Concert", "Festival", "Meetup", "Movie"];
 
   const [croppedPhoto, setCroppedPhoto] = useState<File | null>(null);
 
   useEffect(() => {
     console.log(croppedPhoto);
   }, [croppedPhoto]);
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log(isDateAfterToday(new Date(eDate)));
+    if (!isDateAfterToday(new Date(eDate))) {
+      console.log("date wrong");
+    } else if (!timeCheck(eStartTime, eEndTime)) {
+      console.log("time wrong");
+    } else {
+      let id = (Math.random() * 10000).toString().replace(".", "");
+      const formData: EventsType = {
+        id,
+        title: eTitle,
+        description: eDesc.replace(/\n/g, "<br>"),
+        address: eAdd,
+        category: eCat,
+        organizerName: signedUser?.fullName || "",
+        organizerId: signedUser?.uid || "",
+        ticketPrice: ePrice,
+        country: "",
+        city: "",
+        date: eDate,
+        startTime: eStartTime,
+        endTime: eEndTime,
+      };
+      console.log(formData);
+    }
+  };
 
   if (userLoading) {
     return (
@@ -61,7 +93,10 @@ export default function CreateEvent() {
             </Heading>
             <Heading css="">Create a new event</Heading>
           </div>
-          <form className="flex flex-col gap-4 items-center mt-8">
+          <form
+            className="flex flex-col gap-4 items-center mt-8 w-[90vw] max-w-[500px] mx-auto"
+            onSubmit={handleFormSubmit}
+          >
             <InputField
               text="Event Title :"
               type="text"
@@ -89,14 +124,25 @@ export default function CreateEvent() {
               placeholder="Event Address"
               css="max-w-[500px]"
             />
-            <InputField
-              text="Event Category :"
-              type="text"
-              value={eCat}
-              setValue={setECat}
-              placeholder="Event Category"
-              css="max-w-[500px]"
-            />
+
+            <label>
+              Event Category :
+              <select
+                onChange={(e) => setECat(e.target.value)}
+                value={eCat}
+                required
+                className="border border-1 border-gray-400 my-2 px-4 py-2 outline-none rounded-lg block w-[90vw] max-w-[500px]"
+              >
+                <option value="" disabled>
+                  Select
+                </option>
+                {defCat.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </label>
             <InputField
               text="Event Date :"
               type="date"
@@ -107,13 +153,14 @@ export default function CreateEvent() {
             />
             <InputField
               text="Event Price :"
-              type="text"
+              type="number"
               value={ePrice}
               setValue={setEPrice}
               placeholder="Event Price"
               css="max-w-[500px]"
+              labelInfo="0 if the entry is free"
             />
-            <div className="flex gap-8">
+            <div className="flex justify-between  w-[100%]">
               <div className="flex items-center">
                 <span>Start Time : </span>
                 <input
